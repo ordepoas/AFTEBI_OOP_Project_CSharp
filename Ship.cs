@@ -87,7 +87,34 @@ namespace OOP_Project
 
         public void AddContainer(Container c)
         {
-            _containers.Add(c);
+            if (_containers != null && _containers.Count == _maxContainers)
+            {
+                throw new MaxContainersException(
+                    "\t\tEste navio já tem o máximo de contentores! Contentor não adicionado!");
+            }
+            else
+            {
+
+                if (c is Explosive || _containers.Count == _maxExplosive)
+                {
+                    throw new MaxExplosiveException(
+                        "\t\tEste navio já tem o máximo de contentores do tipo Transporte de Explosivo! Contentor não adicionado!");
+                }
+                else
+                {
+                    if (c is Chemical || _containers.Count == _maxChemical)
+                    {
+                        throw new MaxChemicalException(
+                            "\t\tEste navio já tem o máximo de contentores do tipo Transporte de Químicos!" +
+                            " Contentor não adicionado!"
+                        );
+                    }
+                    else
+                    {
+                        _containers.Add(c);
+                    }
+                }
+            }
         }
 
         public override string ToString()
@@ -102,9 +129,9 @@ namespace OOP_Project
             return s;
         }
 
-        public override bool Equals(object? obj)
+        public override bool Equals(object obj)
         {
-            if (obj == null || !(obj is Ship s)) return false;
+            if (!(obj is Ship s)) return false;
             bool result =
                 _name.Equals(s._name) &&
                 _number == s._number &&

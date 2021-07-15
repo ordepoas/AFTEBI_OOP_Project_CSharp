@@ -1,7 +1,11 @@
-﻿namespace OOP_Project
+﻿using System;
+
+namespace OOP_Project
 {
-    public class MaxExplosiveException
+    public class MaxExplosiveException : Exception
     {
-        
+        public MaxExplosiveException() : base() { }
+
+        public MaxExplosiveException(string message) : base(message) { }
     }
 }

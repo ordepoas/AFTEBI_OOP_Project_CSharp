@@ -1,6 +1,6 @@
 ﻿namespace OOP_Project
 {
-    public class Explosive
+    public class Explosive : Container
     {
         
     }

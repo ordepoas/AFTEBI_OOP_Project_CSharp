@@ -79,9 +79,9 @@ namespace OOP_Project
             return s;
         }
 
-        public override bool Equals(object? obj)
+        public override bool Equals(object obj)
         {
-            if (obj == null || !(obj is Container c)) return false;
+            if (!(obj is Container c)) return false;
             bool result =
                 ShipNumber == c.ShipNumber &&
                 Number == c.Number &&
