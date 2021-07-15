@@ -1,5 +1,8 @@
-﻿namespace OOP_Project
+﻿using System;
+
+namespace OOP_Project
 {
+    [Serializable]
     public class Explosive : Container
     {
         private string _type;
@@ -7,7 +10,14 @@
         
         public Explosive(){}
 
-        public Explosive(string type, bool isPlasticExplosive, int shipNumber, int number, string destination,
+        public Explosive(string type, bool isPlasticExplosive, string number, string destination,
+            int weight) : base(number, destination, weight)
+        {
+            _type = type;
+            _isPlasticExplosive = isPlasticExplosive;
+        }
+
+        public Explosive(string type, bool isPlasticExplosive, int shipNumber, string number, string destination,
             int weight) : base(shipNumber, number, destination, weight)
         {
             _type = type;

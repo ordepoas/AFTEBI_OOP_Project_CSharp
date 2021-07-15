@@ -12,17 +12,19 @@ namespace OOP_Project
         private int _maxContainers;
         private int _maxExplosive;
         private int _maxChemical;
+        private string _flag;
         private List<Container> _containers;
         
         public Ship(){}
 
-        public Ship(string name, int number, int maxContainers, int maxExplosive, int maxChemical)
+        public Ship(string name, int maxContainers, int maxExplosive, int maxChemical, string flag)
         {
             _name = name;
-            _number = number;
+            _number = ShipNumber();
             _maxContainers = maxContainers;
             _maxExplosive = maxExplosive;
             _maxChemical = maxChemical;
+            _flag = flag;
             _containers = new List<Container>();
         }
 
@@ -76,6 +78,16 @@ namespace OOP_Project
             _maxChemical = maxChemical;
         }
 
+        public string GetFlag()
+        {
+            return _flag;
+        }
+
+        public void SetFlag(string flag)
+        {
+            _flag = flag;
+        }
+
         public List<Container> GetContainers()
         {
             return _containers;
@@ -114,7 +126,7 @@ namespace OOP_Project
 
         public override string ToString()
         {
-            string s = "\t\tNome: " + _name + "Número: " + _number;
+            string s = "\t\tNome: " + _name + "\tNúmero: " + _number + "\tBandeira: " + _flag;
             s += "\n\t\tQuant. máxima de contentores: " + _maxContainers;
             s += "\n\t\tQuant. contentores para transporte de Explosivos: " + _maxExplosive;
             s += "\n\t\tQuant. contentores para transporte de Químicos: " + _maxChemical;
@@ -133,9 +145,17 @@ namespace OOP_Project
                 _maxContainers == s._maxContainers &&
                 _maxExplosive == s._maxExplosive &&
                 _maxChemical == s._maxChemical &&
-                _containers == s._containers;
+                _flag == s._flag;
 
             return result;
+        }
+
+        public int ShipNumber()
+        {
+            var random = new Random();
+            var rand = random.Next(1000000, 9999999);
+
+            return rand;
         }
     }
 }

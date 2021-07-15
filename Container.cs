@@ -7,13 +7,13 @@ namespace OOP_Project
     public class Container
     {
         protected int? ShipNumber;
-        protected int Number;
+        protected string Number;
         protected string Destination;
         protected int Weight;
         
         public Container(){}
 
-        public Container(int number, string destination, int weight)
+        public Container(string number, string destination, int weight)
         {
             ShipNumber = null;
             Number = number;
@@ -21,7 +21,7 @@ namespace OOP_Project
             Weight = weight;
         }
 
-        public Container(int shipNumber, int number, string destination, int weight)
+        public Container(int shipNumber, string number, string destination, int weight)
         {
             ShipNumber = shipNumber;
             Number = number;
@@ -39,12 +39,12 @@ namespace OOP_Project
             ShipNumber = shipNumber;
         }
 
-        public int GetNumber()
+        public string GetNumber()
         {
             return Number;
         }
 
-        public void SetNumber(int number)
+        public void SetNumber(string number)
         {
             Number = number;
         }
@@ -101,6 +101,26 @@ namespace OOP_Project
                 Weight == c.Weight;
 
             return result;
+        }
+
+        public string ContainerNumber()
+        {
+            char a, b, c, d;
+            int num1, num2;
+            string cNumb;
+            
+            var random = new Random();
+            a = (char)random.Next(65, 90);
+            b = (char)random.Next(65, 90);
+            c = (char)random.Next(65, 90);
+            d = (char)random.Next(65, 90);
+            num1 = random.Next(100000, 999999);
+            num2 = random.Next(1, 9);
+
+            cNumb = a + b + c + d + " " + num1 + " " + num2;
+
+            return cNumb;
+
         }
     }
 }
