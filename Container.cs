@@ -6,7 +6,7 @@ namespace OOP_Project
     [Serializable]
     public class Container
     {
-        protected int ShipNumber;
+        protected int? ShipNumber;
         protected int Number;
         protected string Destination;
         protected int Weight;
@@ -15,7 +15,7 @@ namespace OOP_Project
 
         public Container(int number, string destination, int weight)
         {
-            ShipNumber = -1;
+            ShipNumber = null;
             Number = number;
             Destination = destination;
             Weight = weight;
@@ -29,7 +29,7 @@ namespace OOP_Project
             Weight = weight;
         }
 
-        public int GetShipNumber()
+        public int? GetShipNumber()
         {
             return ShipNumber;
         }
@@ -71,18 +71,30 @@ namespace OOP_Project
 
         public override string ToString()
         {
-            string s = "\t\tNavio: " + ShipNumber;
-            s += "\n\t\tNúmero de contentor: " + Number;
-            s += "\n\t\tDestino: " + Destination + "\tPeso: " + Weight;
-            s += "\n\t\t-------------------------------------------------\n";
+            string s;
+            if (ShipNumber != null)
+            {
+                s = "\t\tNavio: " + ShipNumber;
+                s += "\n\t\tNúmero de contentor: " + Number;
+                s += "\n\t\tDestino: " + Destination + "\tPeso: " + Weight;
+                s += "\n\t\t-------------------------------------------------\n";
 
-            return s;
+                return s;
+            }
+            else
+            {
+                s = "\t\tNúmero de contentor: " + Number;
+                s += "\n\t\tDestino: " + Destination + "\tPeso: " + Weight;
+                s += "\n\t\t-------------------------------------------------\n";
+
+                return s;
+            }
         }
 
         public override bool Equals(object obj)
         {
             if (!(obj is Container c)) return false;
-            bool result =
+            var result =
                 ShipNumber == c.ShipNumber &&
                 Number == c.Number &&
                 Destination.Equals(c.Destination) &&

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace OOP_Project
 {
@@ -87,32 +88,26 @@ namespace OOP_Project
 
         public void AddContainer(Container c)
         {
-            if (_containers != null && _containers.Count == _maxContainers)
+            if (_containers.Count == _maxContainers)
             {
                 throw new MaxContainersException(
                     "\t\tEste navio já tem o máximo de contentores! Contentor não adicionado!");
             }
             else
             {
-
-                if (c is Explosive || _containers.Count == _maxExplosive)
+                switch (c)
                 {
-                    throw new MaxExplosiveException(
-                        "\t\tEste navio já tem o máximo de contentores do tipo Transporte de Explosivo! Contentor não adicionado!");
-                }
-                else
-                {
-                    if (c is Chemical || _containers.Count == _maxChemical)
-                    {
+                    case Explosive _ when _containers.OfType<Explosive>().Count() == _maxExplosive:
+                        throw new MaxExplosiveException(
+                            "\t\tEste navio já tem o máximo de contentores do tipo Transporte de Explosivo! Contentor não adicionado!");
+                    case Chemical _ when _containers.OfType<Chemical>().Count() == _maxChemical:
                         throw new MaxChemicalException(
                             "\t\tEste navio já tem o máximo de contentores do tipo Transporte de Químicos!" +
                             " Contentor não adicionado!"
                         );
-                    }
-                    else
-                    {
+                    default:
                         _containers.Add(c);
-                    }
+                        break;
                 }
             }
         }

@@ -41,5 +41,24 @@ namespace OOP_Project
         {
             _isRefrigerated = isRefrigerated;
         }
+
+        public override string ToString()
+        {
+            var s = base.ToString();
+            s += "\n\t\tDescrição: " + _description;
+            s += "\n\t\tRefrigerado: " + (_isRefrigerated? "Sim" : "Não");
+
+            return s;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Regular r)) return false;
+            var result =
+                _description.Equals(r._description) &&
+                _isRefrigerated == r._isRefrigerated;
+
+            return result;
+        }
     }
 }

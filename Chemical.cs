@@ -2,6 +2,8 @@
 {
     public class Chemical : Container
     {
+        private string _type;
+        
         
     }
 }
