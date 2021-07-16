@@ -13,6 +13,7 @@ namespace OOP_Project
         private int _maxExplosive;
         private int _maxChemical;
         private string _flag;
+        private bool _isAtPort;
         private List<Container> _containers;
         
         public Ship(){}
@@ -25,6 +26,7 @@ namespace OOP_Project
             _maxExplosive = maxExplosive;
             _maxChemical = maxChemical;
             _flag = flag;
+            _isAtPort = true;
             _containers = new List<Container>();
         }
 
@@ -88,6 +90,16 @@ namespace OOP_Project
             _flag = flag;
         }
 
+        public bool GetIsAtPort()
+        {
+            return _isAtPort;
+        }
+
+        public void SetIsAtPort(bool isAtPort)
+        {
+            _isAtPort = isAtPort;
+        }
+
         public List<Container> GetContainers()
         {
             return _containers;
@@ -127,11 +139,18 @@ namespace OOP_Project
         public override string ToString()
         {
             string s = "\t\tNome: " + _name + "\tNúmero: " + _number + "\tBandeira: " + _flag;
-            s += "\n\t\tQuant. máxima de contentores: " + _maxContainers;
-            s += "\n\t\tQuant. contentores para transporte de Explosivos: " + _maxExplosive;
-            s += "\n\t\tQuant. contentores para transporte de Químicos: " + _maxChemical;
-            s += "\n\t\t================================================\n";
-            s += _containers.ToString();
+            s += "\n\t\tCapacidade contentores: " + _maxContainers;
+            s += "\n\t\tCapacidade contentores de Explosivos: " + _maxExplosive;
+            s += "\n\t\tCapacidade contentores de Químicos: " + _maxChemical;
+            if (_isAtPort == true)
+            {
+                s += "\n\t\tAtracado no porto: Sim";
+            }
+            else
+            {
+                s += "\n\t\tAtracado no porto: Não";
+            }
+            s += "\n\t\t=================================================================\n";
 
             return s;
         }
@@ -140,7 +159,6 @@ namespace OOP_Project
         {
             if (!(obj is Ship s)) return false;
             bool result =
-                _name.Equals(s._name) &&
                 _number == s._number &&
                 _maxContainers == s._maxContainers &&
                 _maxExplosive == s._maxExplosive &&
@@ -156,6 +174,11 @@ namespace OOP_Project
             var rand = random.Next(1000000, 9999999);
 
             return rand;
+        }
+
+        public void ListContainers()
+        {
+            _containers.ForEach(Console.WriteLine);
         }
     }
 }

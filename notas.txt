@@ -1,1 +1,6 @@
 ﻿na classe Ship no metodo addContainer (incluir as validações e Excepções) OK
+
+verificar com o João se os contentores saiem da lista do Porto quando entram no navio OK
+    Adicionado um campo de estado ao navio para validar se está ou não no porto.
+    
+Estudar ficheiro JSON
