@@ -1,1 +1,3 @@
 ﻿na classe Ship no metodo addContainer (incluir as validações e Excepções) OK
+
+verificar com o João se os contentores saiem da lista do Porto quando entram no navio

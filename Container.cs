@@ -4,7 +4,7 @@ using System.Runtime.InteropServices.ComTypes;
 namespace OOP_Project
 {
     [Serializable]
-    public class Container
+    public abstract class Container
     {
         protected int? ShipNumber;
         protected string Number;
@@ -13,18 +13,18 @@ namespace OOP_Project
         
         public Container(){}
 
-        public Container(string number, string destination, int weight)
+        public Container( string destination, int weight)
         {
             ShipNumber = null;
-            Number = number;
+            Number = ContainerNumber();
             Destination = destination;
             Weight = weight;
         }
 
-        public Container(int shipNumber, string number, string destination, int weight)
+        public Container(int shipNumber, string destination, int weight)
         {
             ShipNumber = shipNumber;
-            Number = number;
+            Number = ContainerNumber();
             Destination = destination;
             Weight = weight;
         }
@@ -95,7 +95,6 @@ namespace OOP_Project
         {
             if (!(obj is Container c)) return false;
             var result =
-                ShipNumber == c.ShipNumber &&
                 Number == c.Number &&
                 Destination.Equals(c.Destination) &&
                 Weight == c.Weight;

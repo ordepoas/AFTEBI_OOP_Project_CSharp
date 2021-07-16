@@ -10,15 +10,15 @@ namespace OOP_Project
         
         public Explosive(){}
 
-        public Explosive(string type, bool isPlasticExplosive, string number, string destination,
-            int weight) : base(number, destination, weight)
+        public Explosive(string type, bool isPlasticExplosive, string destination,
+            int weight) : base(destination, weight)
         {
             _type = type;
             _isPlasticExplosive = isPlasticExplosive;
         }
 
-        public Explosive(string type, bool isPlasticExplosive, int shipNumber, string number, string destination,
-            int weight) : base(shipNumber, number, destination, weight)
+        public Explosive(string type, bool isPlasticExplosive, int shipNumber, string destination,
+            int weight) : base(shipNumber, destination, weight)
         {
             _type = type;
             _isPlasticExplosive = isPlasticExplosive;
