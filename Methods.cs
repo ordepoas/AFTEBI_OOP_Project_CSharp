@@ -374,6 +374,7 @@ namespace OOP_Project
             aux = ships.Find(s => s.GetNumber() == option);
 
             aux.SetIsAtPort(false);
+            
             Console.WriteLine("\n\t\tNavio registado como fora do porto!!");
             Console.Write("\n\t\tPrima uma tecla para continuar...");
             Console.ReadLine();
@@ -483,7 +484,7 @@ namespace OOP_Project
                     {
                         Console.WriteLine("\t\tEste contentor já existe!!");
                         Console.WriteLine("\t\tContentor não adicionado");
-                        Console.WriteLine("\n\t\tPrima uma tecla para continuar");
+                        Console.Write("\n\t\tPrima uma tecla para continuar");
                         Console.ReadLine();
                     }
                     else
@@ -492,7 +493,7 @@ namespace OOP_Project
                         {
                             containers.Add(r);
                             Console.WriteLine("\n\t\tContentor adicionado com sucesso!!");
-                            Console.WriteLine("\n\t\tPrima uma tecla para continuar");
+                            Console.Write("\n\t\tPrima uma tecla para continuar");
                             Console.ReadLine();
                         }
                         catch (Exception e)
@@ -905,16 +906,22 @@ namespace OOP_Project
             catch (MaxContainersException e)
             {
                 Console.WriteLine(e.Message);
+                Console.Write("\n\t\tPrima um tecla para continuar");
+                Console.ReadLine();
             }
             
             catch (MaxExplosiveException e)
             {
                 Console.WriteLine(e.Message);
+                Console.Write("\n\t\tPrima um tecla para continuar");
+                Console.ReadLine();
             }
             
             catch (MaxChemicalException e)
             {
                 Console.WriteLine(e.Message);
+                Console.Write("\n\t\tPrima um tecla para continuar");
+                Console.ReadLine();
             }
             
         }
@@ -1034,9 +1041,6 @@ namespace OOP_Project
                     Console.WriteLine();
                     Console.WriteLine(c);
                 }
-                Console.Write("\n\t\tPrima qualquer tecla para continuar...");
-                Console.ReadLine();
-                
             }
             else
             {

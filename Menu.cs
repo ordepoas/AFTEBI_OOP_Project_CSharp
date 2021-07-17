@@ -238,6 +238,8 @@ namespace OOP_Project
                 //Listar contentores não atribuídos
                 case 5:
                     Methods.UnassignedContainers(containers);
+                    Console.Write("\n\t\tPrima qualquer tecla para continuar...");
+                    Console.ReadLine();
                     break;
             }
             return option;
