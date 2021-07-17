@@ -120,6 +120,7 @@ namespace OOP_Project
                 {
                     Console.Write("\n\t\tIndique a sua opção: ");
                     success = int.TryParse(Console.ReadLine(), out option);
+                    Console.WriteLine();
                     if (success && (option < 0 || option > 5))
                     {
                         if (option != 9)
@@ -178,6 +179,7 @@ namespace OOP_Project
             
             while (true)
             {
+                Console.Clear();
                 Console.WriteLine("\t\t=================== GERIR CONTENTORES ===================");
                 Console.WriteLine("\t\t(1) Entrada de contentor");
                 Console.WriteLine("\t\t(2) Saída de contentores");
@@ -245,6 +247,8 @@ namespace OOP_Project
                             {
                                 Console.WriteLine(c);
                             }
+                            Console.WriteLine("\n\t\tPrima qualquer tecla para continuar...");
+                            Console.ReadLine();
                         }
                         break;
                     

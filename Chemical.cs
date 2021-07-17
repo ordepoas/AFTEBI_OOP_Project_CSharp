@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace OOP_Project
 {
-    [Serializable]
+    [Serializable][DataContract (Name = "Quimico")]
     public class Chemical : Container
     {
+        [DataMember (Name = "Tipo Quimico")]
         private string _type;
         
         public Chemical(){}

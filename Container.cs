@@ -1,14 +1,23 @@
 ﻿using System;
 using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.Serialization;
 
 namespace OOP_Project
 {
-    [Serializable]
+    [Serializable][DataContract (Name = "Contentor")]
+    [KnownType(typeof(Regular))]
+    [KnownType(typeof(Explosive))]
+    [KnownType(typeof(Chemical))]
+    
     public abstract class Container
     {
+        [DataMember (Name = "Numero Navio")]
         protected int ShipNumber;
+        [DataMember (Name = "Numero")]
         protected string Number;
+        [DataMember (Name = "Destino")]
         protected string Destination;
+        [DataMember (Name = "Peso")]
         protected int Weight;
         
         public Container(){}
@@ -72,20 +81,17 @@ namespace OOP_Project
         public override string ToString()
         {
             string s;
-            if (ShipNumber != null)
+            if (ShipNumber != -1)
             {
                 s = "\t\tNavio: " + ShipNumber;
                 s += "\n\t\tNúmero de contentor: " + Number;
                 s += "\n\t\tDestino: " + Destination + "\tPeso: " + Weight;
-                s += "\n\t\t-------------------------------------------------\n";
-
                 return s;
             }
             else
             {
                 s = "\t\tNúmero de contentor: " + Number;
                 s += "\n\t\tDestino: " + Destination + "\tPeso: " + Weight;
-                s += "\n\t\t-------------------------------------------------\n";
 
                 return s;
             }

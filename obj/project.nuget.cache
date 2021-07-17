@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "gpuAlkWqe6Y8l+0betRCFtS5HAbUS1yZG6idbl1a2AE4jfjyIIC3K0+egHHeesxra36GZDVExY00jmPgHQjjcQ==",
+  "dgSpecHash": "16PvUkgbe7r2jwtM489KMkTAuUBhs1D2gmHBPeuGNEMa5r9OGkxMFPMCzWQkiHjTdhAR7uPAo0zX6NfostKiFw==",
   "success": true,
   "projectFilePath": "C:\\Users\\HP\\source\\repos\\OOP_Project\\OOP_Project\\OOP_Project.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\HP\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

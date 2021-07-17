@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace OOP_Project
 {
-    [Serializable]
+    [Serializable][DataContract (Name = "Explosivo")]
     public class Explosive : Container
     {
+        [DataMember (Name = "Tipo Explosivo")]
         private string _type;
+        [DataMember (Name = "É plastico")]
         private bool _isPlasticExplosive;
         
         public Explosive(){}
@@ -47,8 +50,11 @@ namespace OOP_Project
         public override string ToString()
         {
             var s = base.ToString();
-            s += "\n\t\tTipo: " + _type;
-            s += "\n\t\tExplosivo Plástico: " + (_isPlasticExplosive? "Sim" : "Não");
+            s += "\n\t\t\t------------------";
+            s += "\n\t\t\tCarga Explosiva";
+            s += "\n\t\t\tDescrição do explosivo: " + _type;
+            s += "\n\t\t\tExplosivo Plástico: " + (_isPlasticExplosive? "Sim" : "Não");
+            s += "\n\t\t--------------------------------------------------------";
 
             return s;
         }

@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace OOP_Project
 {
-    [Serializable]
+    [Serializable][DataContract (Name = "Regular")]
     public class Regular : Container
     {
+        [DataMember (Name = "Descrição")]
         private string _description;
+        [DataMember (Name = "ERefrigerado")]
         private bool _isRefrigerated;
         
         public Regular(){}
@@ -45,9 +48,11 @@ namespace OOP_Project
         public override string ToString()
         {
             var s = base.ToString();
-            s += "\n\t\tDescrição: " + _description;
-            s += "\n\t\tRefrigerado: " + (_isRefrigerated? "Sim" : "Não");
-
+            s += "\n\t\t\t------------------";
+            s += "\n\t\t\tDescrição: " + _description;
+            s += "\n\t\t\tRefrigerado: " + (_isRefrigerated? "Sim" : "Não");
+            s += "\n\t\t--------------------------------------------------------";
+            
             return s;
         }
 

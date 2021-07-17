@@ -1,19 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 
 namespace OOP_Project
 {
-    [Serializable]
+    [Serializable][DataContract (Name = "Navio")]
     public class Ship
     {
+        [DataMember (Name = "Nome")]
         private string _name;
+        [DataMember (Name = "Número")]
         private int _number;
+        [DataMember (Name = "MaxContentores")]
         private int _maxContainers;
+        [DataMember (Name = "MaxExplosivos")]
         private int _maxExplosive;
+        [DataMember (Name = "MaxQuimicos")]
         private int _maxChemical;
+        [DataMember (Name = "Bandeira")]
         private string _flag;
+        [DataMember (Name = "NoPorto")]
         private bool _isAtPort;
+        [DataMember (Name = "Contentores")]
         private List<Container> _containers;
         
         public Ship(){}
@@ -139,9 +148,7 @@ namespace OOP_Project
         public override string ToString()
         {
             string s = "\t\tNome: " + _name + "\tNúmero: " + _number + "\tBandeira: " + _flag;
-            s += "\n\t\tCapacidade contentores: " + _maxContainers;
-            s += "\n\t\tCapacidade contentores de Explosivos: " + _maxExplosive;
-            s += "\n\t\tCapacidade contentores de Químicos: " + _maxChemical;
+            s += "\n\t\tMax. contentores: " + _maxContainers + " Max Explosivo: " + _maxExplosive + " Max Químicos: " + _maxChemical;
             if (_isAtPort == true)
             {
                 s += "\n\t\tAtracado no porto: Sim";
@@ -150,7 +157,7 @@ namespace OOP_Project
             {
                 s += "\n\t\tAtracado no porto: Não";
             }
-            s += "\n\t\t=================================================================\n";
+            s += "\n\t\t---------------------------------------------------------------------------------------------\n";
 
             return s;
         }

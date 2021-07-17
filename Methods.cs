@@ -7,6 +7,12 @@ using System.Net.Http;
 using System.Net.Mime;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization.Json;
+using System.Text;
+using System.Text.Json;
+using System.Xml;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace OOP_Project
 {
@@ -14,15 +20,102 @@ namespace OOP_Project
     {
         public static void Backup(State s)
         {
+            /*
             IFormatter formatador = new BinaryFormatter();
             Stream stream = new FileStream("Estado.txt", FileMode.Create, FileAccess.Write);
 
             formatador.Serialize(stream, s);
             stream.Close();
+            */
+            //write JSON File
+            /*
+            DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(s));
+            MemoryStream msObj = new MemoryStream();
+            js.WriteObject(msObj, s);
+            msObj.Position = 0;
+            StreamReader sr = new StreamReader(msObj);
+            
+            string json = sr.ReadToEnd();
+
+            sr.Close();
+            msObj.Close();            
+            */
+            
+            //write JSON File -------------------- THIS WORKS
+            /*
+            DataContractJsonSerializer data = new DataContractJsonSerializer(typeof(State));
+            MemoryStream memory = new MemoryStream();
+            data.WriteObject(memory, s);
+            memory.Position = 0;
+
+            using (FileStream stream = new FileStream("backup.json", FileMode.Open))
+            {
+                memory.CopyTo(stream);
+                stream.Flush();
+            }
+
+            memory.Position = 0;
+            StreamReader streamReader = new StreamReader(memory);
+            Console.WriteLine("JSON: " + streamReader.ReadToEnd());
+            streamReader.Close();
+            memory.Close(); 
+            */
+            /*
+            var memoryStream = new MemoryStream();
+            var data = new DataContractJsonSerializer(typeof(State));
+            
+            data.WriteObject(memoryStream, s);
+            memoryStream.Position = 0;
+
+            FileStream stream = new FileStream("backup.json", FileMode.Create);
+            memoryStream.CopyTo(stream);
+            stream.Flush();
+            
+            
+            memoryStream.Close();
+            stream.Close();
+            */
+            
+            try
+            {
+                DataContractSerializer ds;
+                FileStream stream = File.Create("backup.xml");
+                ds = new DataContractSerializer(typeof(State));
+                ds.WriteObject(stream, s);
+                
+                stream.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+                        
+            Console.WriteLine("\t\tBackup efetuado com sucesso!");
+
         }
         
         public static State Restore()
         {
+            /*
+            string fileName = "portState.json";
+            string jsonString = File.ReadAllText(fileName);
+            State sJson = JsonSerializer.Deserialize<State>(jsonString);
+            */
+            
+            /*
+            State obj = new State();
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer((typeof(State)));
+            using (FileStream fs = new FileStream("backup.json", FileMode.Open))
+            {
+                using (XmlDictionaryReader jsonr = JsonReaderWriterFactory.CreateJsonReader(fs, Encoding.GetEncoding("utf-8"),XmlDictionaryReaderQuotas.Max,null))
+                {
+                    obj = (State) serializer.ReadObject(jsonr);
+                }
+            }
+            return obj;
+            */
+            /*
             try
             {
                 IFormatter formatador = new BinaryFormatter();
@@ -41,6 +134,58 @@ namespace OOP_Project
             }
 
             return null;
+            */
+            /*
+            using (StreamReader file = File.OpenText(@"c:\videogames.json"))
+            using (JsonTextReader reader = new JsonTextReader(file))
+            {
+                JObject o2 = (JObject) JToken.ReadFrom(reader);
+            }
+            */
+            /*
+            State s;
+            
+            using (StreamReader r = new StreamReader("backup.json"))
+            {
+                string json = r.ReadToEnd();
+                s = JsonConvert.DeserializeObject<State>(json);
+            }*/
+            
+            State s = new State();
+            
+            if (File.Exists("backup.xml"))
+            {
+                var stream = File.Open("backup.xml", FileMode.Open);
+                
+                try
+                {
+                    var reader = XmlDictionaryReader.CreateTextReader(stream, new XmlDictionaryReaderQuotas());
+                    var ds = new DataContractSerializer(typeof(State));
+                    
+                    s = (State) ds.ReadObject(reader, true);
+                    
+                    stream.Close();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
+
+                Console.WriteLine("\t\tRestore efetuado com sucesso!");
+                Console.WriteLine("\t\tPrima uma tecla para continuar...");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("O ficheiro para 'restore' não existe!");
+                Console.WriteLine("\t\tPrima uma tecla para continuar...");
+                Console.ReadLine();
+
+            }
+
+
+            return s;
         }
 
         public static void AddShip(List<Ship> ships)
@@ -55,7 +200,7 @@ namespace OOP_Project
             
             do
             {
-                Console.Write("\t\tCapacidade total geral de contentores: ");
+                Console.Write("\t\tCapacidade total de contentores: ");
                 success = int.TryParse(Console.ReadLine(), out maxContainers);
 
             } while (!success);
@@ -106,7 +251,7 @@ namespace OOP_Project
             if (ships.Count == 0)
             {
                 Console.WriteLine("\t\tNão existem navios no porto!!");
-                Console.Write("\n\n\t\tPrima enter para continuar\t\t");
+                Console.Write("\n\n\t\tPrima enter para continuar...");
                 Console.ReadLine();
             }
             else
@@ -130,13 +275,14 @@ namespace OOP_Project
 
             do
             {
-                Console.Write("\t\t");
                 success = int.TryParse(Console.ReadLine(), out option);
                 
                 if (success && (ships.Find(s => s.GetNumber() == option) == null))
                 {
                     Console.WriteLine("\t\tO número que indicou não existe, insira novo número ou prima S para Sair");
                     success = false;
+                    Console.Write("\t\t");
+
 
                     ConsoleKeyInfo k;
                     k = Console.ReadKey();
@@ -145,6 +291,8 @@ namespace OOP_Project
                     {
                         return;
                     }
+                    Console.WriteLine("\t\t");
+
                 }
                 
             } while (!success);
@@ -165,6 +313,7 @@ namespace OOP_Project
             Console.WriteLine("\t\tIndique o tipo de contentor (R) Regular, (E) Explosivos ou (Q) Químicos");
             do
             {
+                Console.Write("\t\t");
                 k = Console.ReadKey();
                 success = (k.Key == ConsoleKey.R || k.Key == ConsoleKey.E || k.Key == ConsoleKey.Q);
                 if(!success)
@@ -175,7 +324,7 @@ namespace OOP_Project
             switch (k.Key)
             {
                 case ConsoleKey.R :
-                    Console.Write("\t\tDestino: ");
+                    Console.Write("\n\t\tDestino: ");
                     destination = Console.ReadLine();
                     do
                     {
@@ -190,6 +339,7 @@ namespace OOP_Project
                     Console.WriteLine("\t\tRefrigerado (S) Sim ou (N) Não");
                     do
                     {
+                        Console.Write("\t\t");
                         k = Console.ReadKey();
                         success = (k.Key == ConsoleKey.S || k.Key == ConsoleKey.N);
                         if(!success)
@@ -210,14 +360,18 @@ namespace OOP_Project
                     if (containers.Contains(r))
                     {
                         Console.WriteLine("\t\tEste contentor já existe!!");
-                        Console.WriteLine("\n\t\tContentor não adicionado");
+                        Console.WriteLine("\t\tContentor não adicionado");
+                        Console.WriteLine("\n\t\tPrima uma tecla para continuar");
+                        Console.ReadLine();
                     }
                     else
                     {
                         try
                         {
                             containers.Add(r);
-                            Console.WriteLine("\t\tContentor adicionado com sucesso!!");
+                            Console.WriteLine("\n\t\tContentor adicionado com sucesso!!");
+                            Console.WriteLine("\n\t\tPrima uma tecla para continuar");
+                            Console.ReadLine();
                         }
                         catch (Exception e)
                         {
@@ -227,7 +381,7 @@ namespace OOP_Project
                     break;
                 
                 case ConsoleKey.E :
-                    Console.Write("\t\tDestino: ");
+                    Console.Write("\n\t\tDestino: ");
                     destination = Console.ReadLine();
                     do
                     {
@@ -242,6 +396,7 @@ namespace OOP_Project
                     Console.WriteLine("\t\tExplosivo Plástico (S) Sim ou (N) Não");
                     do
                     {
+                        Console.Write("\t\t");
                         k = Console.ReadKey();
                         success = (k.Key == ConsoleKey.S || k.Key == ConsoleKey.N);
                         if(!success)
@@ -262,7 +417,9 @@ namespace OOP_Project
                     if (containers.Contains(explosive))
                     {
                         Console.WriteLine("\t\tEste contentor já existe!!");
-                        Console.WriteLine("\n\t\tContentor não adicionado");
+                        Console.WriteLine("\t\tContentor não adicionado");
+                        Console.Write("\n\t\tPrima uma tecla para continuar...");
+                        Console.ReadLine();
                     }
                     else
                     {
@@ -270,6 +427,8 @@ namespace OOP_Project
                         {
                             containers.Add(explosive);
                             Console.WriteLine("\t\tContentor adicionado com sucesso!!");
+                            Console.Write("\n\t\tPrima uma tecla para continuar...");
+                            Console.ReadLine();
                         }
                         catch (Exception e)
                         {
@@ -279,7 +438,7 @@ namespace OOP_Project
                     break;
                 
                 case ConsoleKey.Q:
-                    Console.Write("\t\tDestino: ");
+                    Console.Write("\n\t\tDestino: ");
                     destination = Console.ReadLine();
                     do
                     {
@@ -296,13 +455,16 @@ namespace OOP_Project
                     {
                         Console.WriteLine("\t\tEste contentor já existe!!");
                         Console.WriteLine("\n\t\tContentor não adicionado");
-                    }
+                        Console.Write("\n\t\tPrima uma tecla para continuar...");
+                        Console.ReadLine();                    }
                     else
                     {
                         try
                         {
                             containers.Add(chemical);
                             Console.WriteLine("\t\tContentor adicionado com sucesso!!");
+                            Console.Write("\n\t\tPrima uma tecla para continuar...");
+                            Console.ReadLine();
                         }
                         catch (Exception e)
                         {
@@ -317,7 +479,7 @@ namespace OOP_Project
         {
             if (containers.Count == 0)
             {
-                Console.WriteLine("\t\tNão existem contentores no porto!!");
+                Console.WriteLine("\n\t\tNão existem contentores no porto!!");
                 Console.Write("\n\n\t\tPrima enter para continuar\t\t");
                 Console.ReadLine();
             }
@@ -325,6 +487,7 @@ namespace OOP_Project
             {
                 foreach (var c in containers)
                 {
+                    Console.WriteLine();
                     Console.WriteLine(c);
                 }
             }
@@ -343,7 +506,7 @@ namespace OOP_Project
 
             do
             {
-                Console.WriteLine("\t\t");
+                Console.Write("\t\t");
                 numContainer = Console.ReadLine();
                 
                 if (containers.Find(c => c.GetNumber().Equals(numContainer)) == null)
@@ -371,6 +534,7 @@ namespace OOP_Project
 
             containers.Remove(aux);
             Console.WriteLine("\n\t\tContentor removido com sucesso!!");
+            Console.WriteLine();
         }
 
         public static void CheckShipsAtPort(List<Ship> ships)
@@ -385,13 +549,13 @@ namespace OOP_Project
             {
                 foreach (var ship in ships)
                 {
-                    if (ship.GetIsAtPort() == true)
+                    if (ship.GetIsAtPort())
                     {
                         counter++;
                     }
                 }
 
-                Console.WriteLine("\t\tNeste momento encontram-se no porto {0} navios", counter);
+                Console.WriteLine("\n\t\tNeste momento encontram-se {0} navios no porto", counter);
                 Console.WriteLine("\n\t\tPrima qualquer  tecla para continuar...");
                 Console.Write("\t\t");
                 Console.ReadLine();
@@ -408,13 +572,12 @@ namespace OOP_Project
 
             do
             {
-                Console.WriteLine("\t\t");
+                Console.Write("\t\t");
                 success = int.TryParse(Console.ReadLine(), out option);
                 
                 if (success && (ships.Find(s => s.GetNumber() == option) == null))
                 {
                     Console.WriteLine("\t\tO número que indicou não existe, insira novo número ou prima S para Sair");
-                    Console.WriteLine("\t\t");
                     success = false;
 
                     ConsoleKeyInfo k;
@@ -438,7 +601,7 @@ namespace OOP_Project
                 aux.ListContainers();
             }
             
-            Console.WriteLine("Prima qualquer tecla para continuar...");
+            Console.Write("\n\t\tPrima qualquer tecla para continuar...");
             Console.ReadLine();
 
         }
@@ -453,13 +616,12 @@ namespace OOP_Project
 
             do
             {
-                Console.WriteLine("\t\t");
+                Console.Write("\t\t");
                 success = int.TryParse(Console.ReadLine(), out option);
                 
                 if (success && (ships.Find(s => s.GetNumber() == option) == null))
                 {
                     Console.WriteLine("\t\tO número que indicou não existe, insira novo número ou prima S para Sair");
-                    Console.WriteLine("\t\t");
                     success = false;
 
                     ConsoleKeyInfo k;
@@ -483,7 +645,7 @@ namespace OOP_Project
             {
                 Console.WriteLine("\t\tO navio {0} tem {1} contentores", aux.GetName(), counter);
             }
-            Console.WriteLine("Prima qualquer tecla para continuar...");
+            Console.WriteLine("\t\tPrima qualquer tecla para continuar...");
             Console.ReadLine();
 
         }
@@ -500,7 +662,7 @@ namespace OOP_Project
 
             do
             {
-                Console.WriteLine("\t\t");
+                Console.Write("\t\t");
                 numContainer = Console.ReadLine();
                 
                 if (containers.Find(c => c.GetNumber().Equals(numContainer)) == null)
@@ -531,7 +693,7 @@ namespace OOP_Project
 
             do
             {
-                Console.WriteLine("\t\t");
+                Console.Write("\t\t");
                 success = int.TryParse(Console.ReadLine(), out option);
                 
                 if (success && (ships.Find(s => s.GetNumber() == option) == null))
@@ -557,6 +719,8 @@ namespace OOP_Project
                 auxContainer.SetShipNumber(auxShip.GetNumber());
                 auxShip.AddContainer(auxContainer);
                 Console.WriteLine("\n\t\tContentor adicionado com sucesso!!");
+                Console.WriteLine("\n\t\tPrima um tecla para continuar");
+                Console.ReadLine();
             }
             catch (MaxContainersException e)
             {
@@ -587,7 +751,7 @@ namespace OOP_Project
 
             do
             {
-                Console.WriteLine("\t\t");
+                Console.Write("\t\t");
                 success = int.TryParse(Console.ReadLine(), out option);
                 
                 if (success && (ships.Find(s => s.GetNumber() == option) == null))
@@ -614,7 +778,7 @@ namespace OOP_Project
 
             do
             {
-                Console.WriteLine("\t\t");
+                Console.Write("\t\t");
                 numContainer = Console.ReadLine();
                 
                 if (auxShip.GetContainers().Find(c => c.GetNumber().Equals(numContainer)) == null)

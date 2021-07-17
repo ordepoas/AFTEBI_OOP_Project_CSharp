@@ -11,3 +11,5 @@ C:\Users\HP\source\repos\OOP_Project\OOP_Project\obj\Debug\netcoreapp3.1\OOP_Pro
 C:\Users\HP\source\repos\OOP_Project\OOP_Project\obj\Debug\netcoreapp3.1\OOP_Project.dll
 C:\Users\HP\source\repos\OOP_Project\OOP_Project\obj\Debug\netcoreapp3.1\OOP_Project.pdb
 C:\Users\HP\source\repos\OOP_Project\OOP_Project\obj\Debug\netcoreapp3.1\OOP_Project.genruntimeconfig.cache
+C:\Users\HP\source\repos\OOP_Project\OOP_Project\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\HP\source\repos\OOP_Project\OOP_Project\obj\Debug\netcoreapp3.1\OOP_Project.csproj.CopyComplete

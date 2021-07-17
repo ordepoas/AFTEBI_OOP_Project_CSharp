@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace OOP_Project
 {
-    [Serializable]
+    [Serializable][DataContract (Name = "Estado")]
     public class State
     {
+        [DataMember (Name = "Navios")]
         private List<Ship> _ships;
+        [DataMember (Name = "Contentores")]
         private List<Container> _containers;
         
         public State(){}
