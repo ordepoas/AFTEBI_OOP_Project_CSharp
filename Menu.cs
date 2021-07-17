@@ -114,10 +114,11 @@ namespace OOP_Project
             Console.WriteLine("\t\t=================== GERIR NAVIOS ===================");
             Console.WriteLine("\t\t(1) Entrada de navio");
             Console.WriteLine("\t\t(2) Saída de navio");
-            Console.WriteLine("\t\t(3) Número Navios no porto");
-            Console.WriteLine("\t\t(4) Número Navios ao Largo");
-            Console.WriteLine("\t\t(5) Listar Números de contentores de um navio");
-            Console.WriteLine("\t\t(6) Listar todos os contentores de um navio");
+            Console.WriteLine("\t\t(3) Chamar navio ao porto");
+            Console.WriteLine("\t\t(4) Número Navios no porto");
+            Console.WriteLine("\t\t(5) Número Navios ao Largo");
+            Console.WriteLine("\t\t(6) Listar Números de contentores de um navio");
+            Console.WriteLine("\t\t(7) Listar todos os contentores de um navio");
             Console.WriteLine("\n\t\t(9) Menu Anterior");
             Console.WriteLine("\t\t(0) Sair");
 
@@ -126,7 +127,7 @@ namespace OOP_Project
                 Console.Write("\n\t\tIndique a sua opção: ");
                 success = int.TryParse(Console.ReadLine(), out option);
                 Console.WriteLine();
-                if (success && (option < 0 || option > 5))
+                if (success && (option < 0 || option > 7))
                 {
                     if (option != 9)
                     {
@@ -135,6 +136,8 @@ namespace OOP_Project
                     }
                 }
             } while (!success);
+            
+            Console.WriteLine();
 
             switch (option)
             {
@@ -150,20 +153,24 @@ namespace OOP_Project
                 case 2:
                     Methods.RemoveShip(ships);
                     break;
-                //Navios no porto
+                //Chamar navio ao porto
                 case 3:
-                    Methods.CheckShipsAtPort(ships);
+                    Methods.CallShipToSeaport(ships);
+                    break;
+                //Navios no porto
+                case 4:
+                    Methods.CountShipsAtSeaport(ships);
                     break;
                 //Navios ao largo
-                case 4:
-                    Methods.CheckShipsAtLarge(ships);
+                case 5:
+                    Methods.CountShipsAtLarge(ships);
                     break;
                 //Lista navios e indica o numero de contentores no navio indicado
-                case 5:
+                case 6:
                     Methods.ListContainerNumberAtShip(ships);
                     break;
                 //Lista navios e lista os contentores no navio indicado
-                case 6:
+                case 7:
                     Methods.ListContainersAtShip(ships);
                     break;
             }
@@ -174,8 +181,8 @@ namespace OOP_Project
         public static int MenuContainers(List<Ship> ships, List<Container> containers)
         {
             bool success;
-            int option;
-            
+            int option, counter = 0;
+
             Console.Clear();
             Console.WriteLine("\t\t=================== GERIR CONTENTORES ===================");
             Console.WriteLine("\t\t(1) Entrada de contentor");
@@ -200,7 +207,9 @@ namespace OOP_Project
                 }
 
             } while (!success);
-
+            
+            Console.WriteLine();
+            
             switch (option)
             {
                 //Sai do programa acedendo ao menu de backup ou fica no menu anterior
@@ -213,18 +222,12 @@ namespace OOP_Project
                     break;                
                 //Remover contentor
                 case 2:
-                    if (Methods.ListContainers(containers) != 0)
-                    {
                         Methods.RemoveContainer(containers);
-                    }
                     break;
                 
                 //Atribuir contentor a um navio;
                 case 3:
-                    if (Methods.ListContainers(containers) != 0)
-                    {
                         Methods.AddContainerToShip(ships, containers);
-                    }
                     break;
                 
                 //Retirar contentor de um navio;
@@ -234,16 +237,7 @@ namespace OOP_Project
 
                 //Listar contentores não atribuídos
                 case 5:
-                    foreach (var c in containers)
-                    {
-                        if (c.GetShipNumber() == -1)
-                        {
-                            Console.WriteLine(c);
-                        }
-                    }
-                    Console.WriteLine("\n\t\tPrima qualquer tecla para continuar...");
-                    Console.ReadLine();
-
+                    Methods.UnassignedContainers(containers);
                     break;
             }
             return option;

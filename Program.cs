@@ -10,12 +10,12 @@ namespace OOP_Project
             
             List<Ship> ships = new List<Ship>();
             List<Container> containers = new List<Container>();
-            State portState = new State(ships, containers);
+            State seaportState = new State(ships, containers);
 
-            if (Menu.RestoreMenu() == 1 && (portState = Methods.Restore()) != null)
+            if (Menu.RestoreMenu() == 1 && (seaportState = Methods.Restore()) != null)
             {
-                ships = portState.GetShips();
-                containers = portState.GetContainers();
+                ships = seaportState.GetShips();
+                containers = seaportState.GetContainers();
 
             }
 
@@ -23,7 +23,7 @@ namespace OOP_Project
             
             if (Menu.BackupMenu() == 1 && (ships.Count > 0 || containers.Count > 0))
             {
-                Methods.Backup(portState);
+                Methods.Backup(seaportState);
             }
         }
     }

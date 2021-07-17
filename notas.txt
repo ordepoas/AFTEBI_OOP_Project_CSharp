@@ -6,18 +6,20 @@ verificar com o João se os contentores saiem da lista do Porto quando entram no
 Estudar ficheiro JSON 
     Faz backup, ainda não recupera
 
-Arranjar numeros contentores
+Arranjar numeros contentores //----OK
 
 
-Na lista dos navios a sair do Porto só devem constar os navios que estão no Porto;
-Na Lista de navios a atribuir contentores só devem constar os navios que estão no Porto;
+Na lista dos navios a sair do Porto só devem constar os navios que estão no Porto; //----OK
+Na Lista de navios a atribuir contentores só devem constar os navios que estão no Porto; //----OK
 
-Remove container from ship não apresenta a informação dos contentores; ou não valida
+Remove container from ship não apresenta a informação dos contentores; ou não valida //---- OK
 
-quando não há navios no porto não aparece a informação
+quando não há navios no porto não aparece a informação //----OK
 
 verificar funcionamento dos menus //----OK
 
 
 inserir try / catch
+
+chamar navios ao porto //---- OK
 

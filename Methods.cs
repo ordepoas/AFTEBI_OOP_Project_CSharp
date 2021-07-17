@@ -1,18 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Diagnostics;
 using System.IO;
-using System.Net.Http;
-using System.Net.Mime;
+using System.Linq;
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization.Json;
-using System.Text;
-using System.Text.Json;
 using System.Xml;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace OOP_Project
 {
@@ -262,7 +254,7 @@ namespace OOP_Project
         {
             if (ships.Count == 0)
             {
-                Console.WriteLine("\t\tNão existem navios no porto!!");
+                Console.WriteLine("\t\tNão existem navios associados ao porto!!");
                 Console.Write("\n\n\t\tPrima enter para continuar...");
                 Console.ReadLine();
             }
@@ -277,51 +269,78 @@ namespace OOP_Project
             return ships.Count;
         }
 
-        public static int ListShipAtPort(List<Ship> ships)
+        public static int ListShipAtSeaport(List<Ship> ships)
         {
-            if (ships.Count == 0)
+            int counter = 0;
+
+            foreach (var s in ships)
+            {
+                if (s.GetIsAtPort())
+                {
+                    counter++;
+                }
+            }
+
+            if (counter > 0)
+            {
+                foreach (var s in ships)
+                {
+                    if (s.GetIsAtPort())
+                    {
+                        Console.WriteLine(s);
+                    }
+                }
+            }
+            else
             {
                 Console.WriteLine("\t\tNão existem navios no porto!!");
                 Console.Write("\n\n\t\tPrima enter para continuar...");
                 Console.ReadLine();
             }
-            else
-            {
-                foreach (var s in ships)
-                {
-                    Console.WriteLine(s);
-                }
-            }
 
-            return ships.Count;
+            return counter;
         }
 
         public static int ListShipAtLarge(List<Ship> ships)
         {
-            if (ships.Count == 0)
+            int counter = 0;
+
+            foreach (var s in ships)
+            {
+                if (!s.GetIsAtPort())
+                {
+                    counter++;
+                }
+            }
+
+            if (counter > 0)
+            {
+                foreach (var s in ships)
+                {
+                    if (!s.GetIsAtPort())
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine(s);
+                    }
+                }
+            }
+            else
             {
                 Console.WriteLine("\t\tNão existem navios no porto!!");
                 Console.Write("\n\n\t\tPrima enter para continuar...");
                 Console.ReadLine();
             }
-            else
-            {
-                foreach (var s in ships)
-                {
-                    Console.WriteLine(s);
-                }
-            }
 
-            return ships.Count;
+            return counter;
         }
-
+        
         public static void RemoveShip(List<Ship> ships)
         {
             bool success;
             int option;
             Ship aux;
 
-            if (ListShipAtPort(ships) == 0)
+            if (ListShipAtSeaport(ships) == 0)
             {
                 return;
             }
@@ -356,6 +375,54 @@ namespace OOP_Project
 
             aux.SetIsAtPort(false);
             Console.WriteLine("\n\t\tNavio registado como fora do porto!!");
+            Console.Write("\n\t\tPrima uma tecla para continuar...");
+            Console.ReadLine();
+        }
+        
+        public static void CallShipToSeaport(List<Ship> ships)
+        {
+            bool success;
+            int option;
+            Ship aux;
+
+            if (ListShipAtLarge(ships) == 0)
+            {
+                return;
+            }
+            
+            Console.Write("\n\t\tIndique o número do navio: ");
+
+            do
+            {
+                success = int.TryParse(Console.ReadLine(), out option);
+                
+                if (success && (ships.Find(s => s.GetNumber() == option) == null))
+                {
+                    Console.WriteLine("\t\tO número que indicou não existe, insira novo número ou prima S para Sair");
+                    success = false;
+                    Console.Write("\t\t");
+
+
+                    ConsoleKeyInfo k;
+                    k = Console.ReadKey();
+                    
+                    if (k.Key == ConsoleKey.S)
+                    {
+                        return;
+                    }
+                    Console.WriteLine("\t\t");
+
+                }
+                
+            } while (!success);
+
+            aux = ships.Find(s => s.GetNumber() == option);
+
+            aux.SetIsAtPort(true);
+            Console.WriteLine("\n\t\tNavio registado como estando no porto!!");
+            Console.Write("\n\t\tPrima uma tecla para continuar...");
+            Console.ReadLine();
+
         }
         
         public static void AddContainer(List<Container> containers)
@@ -535,7 +602,7 @@ namespace OOP_Project
             if (containers.Count == 0)
             {
                 Console.WriteLine("\n\t\tNão existem contentores no porto!!");
-                Console.Write("\n\n\t\tPrima enter para continuar\t\t");
+                Console.Write("\n\n\t\tPrima enter para continuar");
                 Console.ReadLine();
             }
             else
@@ -556,6 +623,11 @@ namespace OOP_Project
             int option;
             string numContainer;
             Container aux;
+
+            if (ListContainers(containers) == 0)
+            {
+                return;
+            }
             
             Console.WriteLine("\n\t\tIndique o número do contentor que quer remover: ");
 
@@ -592,13 +664,15 @@ namespace OOP_Project
             Console.WriteLine();
         }
 
-        public static void CheckShipsAtPort(List<Ship> ships)
+        public static void CountShipsAtSeaport(List<Ship> ships)
         {
             int counter = 0;
 
             if (ships.Count == 0)
             {
                 Console.WriteLine("\n\t\tNão existem navios no porto!");
+                Console.Write("\n\t\tPrima uma tecla para continuar");
+                Console.ReadLine();
             }
             else
             {
@@ -617,13 +691,15 @@ namespace OOP_Project
             }
         }
         
-        public static void CheckShipsAtLarge(List<Ship> ships)
+        public static void CountShipsAtLarge(List<Ship> ships)
         {
             int counter = 0;
 
             if (ships.Count == 0)
             {
                 Console.WriteLine("\n\t\tNão existem navios ao largo!");
+                Console.Write("\n\t\tPrima uma tecla para continuar");
+                Console.ReadLine();
             }
             else
             {
@@ -636,8 +712,7 @@ namespace OOP_Project
                 }
 
                 Console.WriteLine("\n\t\tNeste momento encontram-se {0} navios ao largo", counter);
-                Console.WriteLine("\n\t\tPrima qualquer  tecla para continuar...");
-                Console.Write("\t\t");
+                Console.Write("\n\t\tPrima qualquer  tecla para continuar...");
                 Console.ReadLine();
             }
         }
@@ -686,6 +761,7 @@ namespace OOP_Project
             {
                 foreach (var c in aux.GetContainers())
                 {
+                    Console.Write("\n\t\t");
                     Console.WriteLine(c.GetNumber());
                 }
             }
@@ -738,9 +814,13 @@ namespace OOP_Project
             }
             else
             {
-                Console.WriteLine("\t\tO navio {0} tem {1} contentores", aux.GetName(), counter);
+                foreach (var c in aux.GetContainers())
+                {
+                    Console.WriteLine("\n");
+                    Console.WriteLine(c);
+                }
             }
-            Console.WriteLine("\t\tPrima qualquer tecla para continuar...");
+            Console.Write("\t\tPrima qualquer tecla para continuar...");
             Console.ReadLine();
 
         }
@@ -752,6 +832,11 @@ namespace OOP_Project
             string numContainer;
             Container auxContainer;
             Ship auxShip;
+
+            if (UnassignedContainers(containers) == 0)
+            {
+                return;
+            }
             
             Console.WriteLine("\n\t\tIndique o número do contentor: ");
 
@@ -763,7 +848,7 @@ namespace OOP_Project
                 if (containers.Find(c => c.GetNumber().Equals(numContainer)) == null)
                 {
                     Console.WriteLine("\t\tO número que indicou não existe, insira novo número ou prima S para Sair");
-                    Console.WriteLine("\t\t");
+                    Console.Write("\t\t");
                     success = false;
 
                     ConsoleKeyInfo k;
@@ -783,7 +868,7 @@ namespace OOP_Project
 
             auxContainer = containers.Find(s => s.GetNumber().Equals(numContainer));
 
-            ships.ForEach(Console.WriteLine);
+            ListShipAtSeaport(ships);
             Console.WriteLine("\n\t\tIndique o número do navio: ");
 
             do
@@ -794,7 +879,7 @@ namespace OOP_Project
                 if (success && (ships.Find(s => s.GetNumber() == option) == null))
                 {
                     Console.WriteLine("\t\tO número que indicou não existe, insira novo número ou prima S para Sair");
-                    Console.WriteLine("\t\t");
+                    Console.Write("\t\t");
                     success = false;
 
                     ConsoleKeyInfo k;
@@ -814,7 +899,7 @@ namespace OOP_Project
                 auxContainer.SetShipNumber(auxShip.GetNumber());
                 auxShip.AddContainer(auxContainer);
                 Console.WriteLine("\n\t\tContentor adicionado com sucesso!!");
-                Console.WriteLine("\n\t\tPrima um tecla para continuar");
+                Console.Write("\n\t\tPrima um tecla para continuar");
                 Console.ReadLine();
             }
             catch (MaxContainersException e)
@@ -842,7 +927,7 @@ namespace OOP_Project
             Container auxContainer;
             Ship auxShip;
             
-            if (ListShipAtPort(ships) == 0)
+            if (ListShipAtSeaport(ships) == 0)
             {
                 return;
             }
@@ -857,7 +942,7 @@ namespace OOP_Project
                 if (success && (ships.Find(s => s.GetNumber() == option) == null))
                 {
                     Console.WriteLine("\t\tO número que indicou não existe, insira novo número ou prima S para Sair");
-                    Console.WriteLine("\t\t");
+                    Console.Write("\t\t");
                     success = false;
 
                     ConsoleKeyInfo k;
@@ -872,8 +957,11 @@ namespace OOP_Project
             } while (!success);
 
             auxShip = ships.Find(s => s.GetNumber() == option);
-            
-            auxShip.ListContainers();
+
+            if (auxShip.ListContainers() == 0)
+            {
+                return;
+            }
             Console.WriteLine("\n\t\tIndique o número do contentor: ");
 
             do
@@ -884,7 +972,7 @@ namespace OOP_Project
                 if (auxShip.GetContainers().Find(c => c.GetNumber().Equals(numContainer)) == null)
                 {
                     Console.WriteLine("\t\tO número que indicou não existe, insira novo número ou prima S para Sair");
-                    Console.WriteLine("\t\t");
+                    Console.Write("\t\t");
                     success = false;
 
                     ConsoleKeyInfo k;
@@ -917,7 +1005,48 @@ namespace OOP_Project
             }
             
         }
-        
-        
+
+        public static int UnassignedContainers(List<Container> containers)
+        {
+            int counter = 0;
+            
+            if (containers.Count == 0)
+            {
+                Console.WriteLine("\n\t\tNão existem contentores associados ao porto!");
+                Console.Write("\n\t\tPrima qualquer tecla para continuar...");
+                Console.ReadLine();
+                
+                return counter;
+            }
+
+            foreach (var c in containers)
+            {
+                if (c.GetShipNumber() == -1)
+                {
+                    counter++;
+                }
+            }
+
+            if (counter > 0)
+            {
+                foreach (var c in containers.Where(c => c.GetShipNumber() == -1))
+                {
+                    Console.WriteLine();
+                    Console.WriteLine(c);
+                }
+                Console.Write("\n\t\tPrima qualquer tecla para continuar...");
+                Console.ReadLine();
+                
+            }
+            else
+            {
+                Console.WriteLine("\n\t\tTodos os contentores estão atribuídos!");
+                Console.Write("\n\t\tPrima qualquer tecla para continuar...");
+                Console.ReadLine();
+            
+            }
+
+            return counter;
+        }
     }
 }

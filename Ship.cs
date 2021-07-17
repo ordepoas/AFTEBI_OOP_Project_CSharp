@@ -183,9 +183,21 @@ namespace OOP_Project
             return rand;
         }
 
-        public void ListContainers()
+        public int ListContainers()
         {
-            _containers.ForEach(Console.WriteLine);
+            if (_containers.Count == 0)
+            {
+                Console.WriteLine("\n\t\tEste navio não tem contentores atribuídos!");
+                Console.Write("\n\t\tPrima uma tecla para continuar...");
+                Console.ReadLine();
+                
+            }
+            else
+            {
+                _containers.ForEach(Console.WriteLine);
+            }
+
+            return _containers.Count;
         }
     }
 }

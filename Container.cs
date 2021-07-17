@@ -83,8 +83,8 @@ namespace OOP_Project
             string s;
             if (ShipNumber != -1)
             {
-                s = "\t\tNavio: " + ShipNumber;
-                s += "\n\t\tNúmero de contentor: " + Number;
+                s = "\t\tNúmero de contentor: " + Number;
+                s = "\n\t\tNavio: " + ShipNumber;
                 s += "\n\t\tDestino: " + Destination + "\tPeso: " + Weight;
                 return s;
             }
@@ -122,7 +122,7 @@ namespace OOP_Project
             num1 = random.Next(100000, 999999);
             num2 = random.Next(1, 9);
 
-            cNumb = a + b + c + d + " " + num1 + " " + num2;
+            cNumb = a.ToString() + b.ToString() + c.ToString() + d.ToString() + " " + num1 + " " + num2;
 
             return cNumb;
 
