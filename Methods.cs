@@ -60,22 +60,34 @@ namespace OOP_Project
             streamReader.Close();
             memory.Close(); 
             */
-            /*
-            var memoryStream = new MemoryStream();
-            var data = new DataContractJsonSerializer(typeof(State));
             
-            data.WriteObject(memoryStream, s);
-            memoryStream.Position = 0;
+            //-------- CREATE JSON
+            try
+            {
+                var memoryStream = new MemoryStream();
+                var data = new DataContractJsonSerializer(typeof(State));
 
-            FileStream stream = new FileStream("backup.json", FileMode.Create);
-            memoryStream.CopyTo(stream);
-            stream.Flush();
-            
-            
-            memoryStream.Close();
-            stream.Close();
-            */
-            
+                data.WriteObject(memoryStream, s);
+                memoryStream.Position = 0;
+
+                FileStream filestream = File.Create("backup.json");
+                memoryStream.CopyTo(filestream);
+                filestream.Flush();
+
+
+                memoryStream.Close();
+                filestream.Close();
+                
+                Console.WriteLine("\t\tBackup efetuado com sucesso!");
+
+            }
+
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            //-------- CREATE XML
             try
             {
                 DataContractSerializer ds;
@@ -84,15 +96,15 @@ namespace OOP_Project
                 ds.WriteObject(stream, s);
                 
                 stream.Close();
+                Console.WriteLine("\t\tBackup efetuado com sucesso!");
+
 
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-                        
-            Console.WriteLine("\t\tBackup efetuado com sucesso!");
-
+            
         }
         
         public static State Restore()
@@ -173,13 +185,13 @@ namespace OOP_Project
                 }
 
                 Console.WriteLine("\t\tRestore efetuado com sucesso!");
-                Console.WriteLine("\t\tPrima uma tecla para continuar...");
+                Console.Write("\t\tPrima uma tecla para continuar...");
                 Console.ReadLine();
             }
             else
             {
                 Console.WriteLine("O ficheiro para 'restore' não existe!");
-                Console.WriteLine("\t\tPrima uma tecla para continuar...");
+                Console.Write("\t\tPrima uma tecla para continuar...");
                 Console.ReadLine();
 
             }
@@ -246,7 +258,45 @@ namespace OOP_Project
             }
         }
 
-        public static int ListShip(List<Ship> ships)
+        public static int ListShipAll(List<Ship> ships)
+        {
+            if (ships.Count == 0)
+            {
+                Console.WriteLine("\t\tNão existem navios no porto!!");
+                Console.Write("\n\n\t\tPrima enter para continuar...");
+                Console.ReadLine();
+            }
+            else
+            {
+                foreach (var s in ships)
+                {
+                    Console.WriteLine(s);
+                }
+            }
+
+            return ships.Count;
+        }
+
+        public static int ListShipAtPort(List<Ship> ships)
+        {
+            if (ships.Count == 0)
+            {
+                Console.WriteLine("\t\tNão existem navios no porto!!");
+                Console.Write("\n\n\t\tPrima enter para continuar...");
+                Console.ReadLine();
+            }
+            else
+            {
+                foreach (var s in ships)
+                {
+                    Console.WriteLine(s);
+                }
+            }
+
+            return ships.Count;
+        }
+
+        public static int ListShipAtLarge(List<Ship> ships)
         {
             if (ships.Count == 0)
             {
@@ -270,6 +320,11 @@ namespace OOP_Project
             bool success;
             int option;
             Ship aux;
+
+            if (ListShipAtPort(ships) == 0)
+            {
+                return;
+            }
             
             Console.Write("\n\t\tIndique o número do navio: ");
 
@@ -562,11 +617,42 @@ namespace OOP_Project
             }
         }
         
-        public static void ListContainersAtShip(List<Ship> ships)
+        public static void CheckShipsAtLarge(List<Ship> ships)
+        {
+            int counter = 0;
+
+            if (ships.Count == 0)
+            {
+                Console.WriteLine("\n\t\tNão existem navios ao largo!");
+            }
+            else
+            {
+                foreach (var ship in ships)
+                {
+                    if (!ship.GetIsAtPort())
+                    {
+                        counter++;
+                    }
+                }
+
+                Console.WriteLine("\n\t\tNeste momento encontram-se {0} navios ao largo", counter);
+                Console.WriteLine("\n\t\tPrima qualquer  tecla para continuar...");
+                Console.Write("\t\t");
+                Console.ReadLine();
+            }
+        }
+        
+        public static void ListContainerNumberAtShip(List<Ship> ships)
         {
             bool success;
             int option;
             Ship aux;
+            
+            if (ListShipAll(ships) == 0)
+            {
+                return;
+            }
+
             
             Console.WriteLine("\n\t\tIndique o número do navio: ");
 
@@ -598,7 +684,10 @@ namespace OOP_Project
             }
             else
             {
-                aux.ListContainers();
+                foreach (var c in aux.GetContainers())
+                {
+                    Console.WriteLine(c.GetNumber());
+                }
             }
             
             Console.Write("\n\t\tPrima qualquer tecla para continuar...");
@@ -606,11 +695,17 @@ namespace OOP_Project
 
         }
     
-        public static void CountContainersAtShip(List<Ship> ships)
+        public static void ListContainersAtShip(List<Ship> ships)
         {
             bool success;
             int option, counter;
             Ship aux;
+            
+            if (ListShipAll(ships) == 0)
+            {
+                return;
+            }
+
             
             Console.WriteLine("\n\t\tIndique o número do navio: ");
 
@@ -746,6 +841,11 @@ namespace OOP_Project
             string numContainer;
             Container auxContainer;
             Ship auxShip;
+            
+            if (ListShipAtPort(ships) == 0)
+            {
+                return;
+            }
             
             Console.WriteLine("\n\t\tIndique o número do navio: ");
 

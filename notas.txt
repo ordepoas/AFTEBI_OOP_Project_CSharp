@@ -1,11 +1,12 @@
-﻿na classe Ship no metodo addContainer (incluir as validações e Excepções) OK
+﻿na classe Ship no metodo addContainer (incluir as validações e Excepções) //----OK
 
-verificar com o João se os contentores saiem da lista do Porto quando entram no navio OK
+verificar com o João se os contentores saiem da lista do Porto quando entram no navio //----OK
     Adicionado um campo de estado ao navio para validar se está ou não no porto.
     
-Estudar ficheiro JSON OK
+Estudar ficheiro JSON 
+    Faz backup, ainda não recupera
 
-Arranjar num contentores
+Arranjar numeros contentores
 
 
 Na lista dos navios a sair do Porto só devem constar os navios que estão no Porto;
@@ -15,4 +16,8 @@ Remove container from ship não apresenta a informação dos contentores; ou nã
 
 quando não há navios no porto não aparece a informação
 
-o zero em gerir navios não faz nada
+verificar funcionamento dos menus //----OK
+
+
+inserir try / catch
+
