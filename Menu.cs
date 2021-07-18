@@ -119,6 +119,7 @@ namespace OOP_Project
             Console.WriteLine("\t\t(5) Número Navios ao Largo");
             Console.WriteLine("\t\t(6) Listar Números de contentores de um navio");
             Console.WriteLine("\t\t(7) Listar todos os contentores de um navio");
+            Console.WriteLine("\t\t(8) Listar todos os navios");
             Console.WriteLine("\n\t\t(9) Menu Anterior");
             Console.WriteLine("\t\t(0) Sair");
 
@@ -127,18 +128,14 @@ namespace OOP_Project
                 Console.Write("\n\t\tIndique a sua opção: ");
                 success = int.TryParse(Console.ReadLine(), out option);
                 Console.WriteLine();
-                if (success && (option < 0 || option > 7))
+                if (success && (option < 0 || option > 9))
                 {
-                    if (option != 9)
-                    {
                         Console.WriteLine("\t\tOpção inválida!");
                         success = false;
-                    }
                 }
+                
             } while (!success);
             
-            Console.WriteLine();
-
             switch (option)
             {
                 //Saí do programa acedendo ao Menu de Backup ou retorna ao menu anterior
@@ -173,6 +170,9 @@ namespace OOP_Project
                 case 7:
                     Methods.ListContainersAtShip(ships);
                     break;
+                case 8:
+                    Methods.ListShipAll(ships);
+                    break;
             }
 
             return option;
@@ -190,6 +190,7 @@ namespace OOP_Project
             Console.WriteLine("\t\t(3) Atribuir um contentor a um navio");
             Console.WriteLine("\t\t(4) Retirar um contentor de um navio");
             Console.WriteLine("\t\t(5) Listar todos os contentores não atribuídos");
+            Console.WriteLine("\t\t(6) Listar todos os contentores");
             Console.WriteLine("\n\t\t(9) Menu Anterior");
             Console.WriteLine("\t\t(0) Sair");
 
@@ -197,7 +198,7 @@ namespace OOP_Project
             {
                 Console.Write("\n\t\tIndique a sua opção: ");
                 success = int.TryParse(Console.ReadLine(), out option);
-                if (success && (option < 0 || option > 5))
+                if (success && (option < 0 || option > 6))
                 {
                     if (option != 9)
                     {
@@ -207,8 +208,6 @@ namespace OOP_Project
                 }
 
             } while (!success);
-            
-            Console.WriteLine();
             
             switch (option)
             {
@@ -238,6 +237,12 @@ namespace OOP_Project
                 //Listar contentores não atribuídos
                 case 5:
                     Methods.UnassignedContainers(containers);
+                    Console.Write("\n\t\tPrima qualquer tecla para continuar...");
+                    Console.ReadLine();
+                    break;
+                //listar todos os contentores;
+                case 6 :
+                    Methods.ListContainers(containers);
                     Console.Write("\n\t\tPrima qualquer tecla para continuar...");
                     Console.ReadLine();
                     break;

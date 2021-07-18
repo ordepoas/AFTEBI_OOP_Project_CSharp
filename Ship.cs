@@ -148,7 +148,7 @@ namespace OOP_Project
         public override string ToString()
         {
             string s = "\t\tNome: " + _name + "\tNúmero: " + _number + "\tBandeira: " + _flag;
-            s += "\n\t\tMax. contentores: " + _maxContainers + " Max Explosivo: " + _maxExplosive + " Max Químicos: " + _maxChemical;
+            s += "\n\t\tMax. contentores: " + _maxContainers + "\t Max Explosivo: " + _maxExplosive + "\t Max Químicos: " + _maxChemical;
             if (_isAtPort == true)
             {
                 s += "\n\t\tAtracado no porto: Sim";
@@ -157,7 +157,7 @@ namespace OOP_Project
             {
                 s += "\n\t\tAtracado no porto: Não";
             }
-            s += "\n\t\t---------------------------------------------------------------------------------------------\n";
+            s += "\n\t\t---------------------------------------------------------------------------------------------";
 
             return s;
         }

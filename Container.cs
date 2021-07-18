@@ -81,20 +81,12 @@ namespace OOP_Project
         public override string ToString()
         {
             string s;
+            s = "\t\tNúmero de contentor: " + Number + "\t Destino: " + Destination + "\t Peso: " + Weight;
             if (ShipNumber != -1)
             {
-                s = "\t\tNúmero de contentor: " + Number;
-                s = "\n\t\tNavio: " + ShipNumber;
-                s += "\n\t\tDestino: " + Destination + "\tPeso: " + Weight;
-                return s;
+                s += "\n\t\tNavio: " + ShipNumber;
             }
-            else
-            {
-                s = "\t\tNúmero de contentor: " + Number;
-                s += "\n\t\tDestino: " + Destination + "\tPeso: " + Weight;
-
-                return s;
-            }
+            return s;
         }
 
         public override bool Equals(object obj)

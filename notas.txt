@@ -19,7 +19,16 @@ quando não há navios no porto não aparece a informação //----OK
 verificar funcionamento dos menus //----OK
 
 
-inserir try / catch
+inserir try / catch //---- OK
 
 chamar navios ao porto //---- OK
+
+Listar 3 contentores por página //----OK
+Listar 4 navios por página // ----OK
+
+Imagem para Carateres
+
+comentar o código
+
+retirar contentores -> o navio tem que ter contentores //---- OK
 

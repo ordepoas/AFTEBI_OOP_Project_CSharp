@@ -49,6 +49,7 @@ namespace OOP_Project
         {
             var s = base.ToString();
             s += "\n\t\t\t------------------";
+            s += "\n\t\t\tCarga Regular";
             s += "\n\t\t\tDescrição: " + _description;
             s += "\n\t\t\tRefrigerado: " + (_isRefrigerated? "Sim" : "Não");
             s += "\n\t\t--------------------------------------------------------";
