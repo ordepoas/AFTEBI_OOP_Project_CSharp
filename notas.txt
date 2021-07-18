@@ -26,9 +26,18 @@ chamar navios ao porto //---- OK
 Listar 3 contentores por página //----OK
 Listar 4 navios por página // ----OK
 
-Imagem para Carateres
+Imagem para Carateres //---- OK
 
 comentar o código
 
 retirar contentores -> o navio tem que ter contentores //---- OK
 
+Menu->Contentores 4 não está ok   //---- OK
+    opção N de callship apresenta a indicação O navio regressou ao porto
+    e lista os contentores do navio
+    
+Menu -> Navios 6 e 7 só devem apresentar navios com contentores.// ----OK
+
+Com a opção sair não aceita numeros.... //---- OK
+
+atribuir contentor a navio a listagem não faz break //---- OK

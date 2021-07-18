@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace OOP_Project
 {
@@ -7,6 +8,13 @@ namespace OOP_Project
     {
         static void Main(string[] args)
         {
+            string[] logo = File.ReadAllLines("logo.txt");
+            foreach (string line in logo)
+            {
+                Console.WriteLine(line);
+            }
+            Console.Write("\t\tPrima uma tecla para continuar...");
+            Console.ReadKey();
             
             List<Ship> ships = new List<Ship>();
             List<Container> containers = new List<Container>();
