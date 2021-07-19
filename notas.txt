@@ -4,7 +4,7 @@ verificar com o João se os contentores saiem da lista do Porto quando entram no
     Adicionado um campo de estado ao navio para validar se está ou não no porto.
     
 Estudar ficheiro JSON 
-    Faz backup, ainda não recupera
+    Faz backup, ainda não recupera //---- OK
 
 Arranjar numeros contentores //----OK
 

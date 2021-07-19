@@ -52,7 +52,7 @@ namespace OOP_Project
             s += "\n\t\t\tCarga Regular";
             s += "\n\t\t\tDescrição: " + _description;
             s += "\n\t\t\tRefrigerado: " + (_isRefrigerated? "Sim" : "Não");
-            s += "\n\t\t--------------------------------------------------------";
+            s += "\n\t\t---------------------------------------------------------------------------------------------";
             
             return s;
         }

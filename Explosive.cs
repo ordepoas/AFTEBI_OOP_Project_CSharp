@@ -54,7 +54,7 @@ namespace OOP_Project
             s += "\n\t\t\tCarga Explosiva";
             s += "\n\t\t\tDescrição do explosivo: " + _type;
             s += "\n\t\t\tExplosivo Plástico: " + (_isPlasticExplosive? "Sim" : "Não");
-            s += "\n\t\t--------------------------------------------------------";
+            s += "\n\t\t---------------------------------------------------------------------------------------------";
 
             return s;
         }

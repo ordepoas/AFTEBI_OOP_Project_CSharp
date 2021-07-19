@@ -280,6 +280,8 @@ namespace OOP_Project
                 Console.WriteLine("\t\tNão existem navios associados ao porto!!");
                 Console.Write("\n\n\t\tPrima enter para continuar...");
                 Console.ReadLine();
+
+                return shipsWithContainers;
             }
             else
                 Console.WriteLine("\t\t===================================== LISTA DE NAVIOS =====================================");
@@ -310,7 +312,7 @@ namespace OOP_Project
                 }
             }
 
-            return ships.Count;
+            return shipsWithContainers;
         }
 
         //Método para listar os navios que estão no porto
@@ -875,7 +877,7 @@ namespace OOP_Project
             {
                 foreach (var c in aux.GetContainers())
                 {
-                    Console.Write("\t\t");
+                    Console.Write("\t\t---- Lista de contentores ----");
                     Console.WriteLine(c.GetNumber());
                 }
             }
@@ -1242,7 +1244,7 @@ namespace OOP_Project
             {
                 Console.Write("\n\t\tPrima uma tecla para mais registos... ");
                 Console.ReadLine();
-                Console.WriteLine("\t\t*********************************************************************************************");
+                Console.WriteLine("\n\t\t*********************************************************************************************");
             }
         }
     }

@@ -32,7 +32,7 @@ namespace OOP_Project
         {
             bool success;
             int option;
-            
+            Console.Clear();
             Console.WriteLine("\t\tDeseja fazer 'backup' do Estado do porto?");
             Console.WriteLine("\t\t(1) - Sim | (2) - Não");
 
