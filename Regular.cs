@@ -56,7 +56,8 @@ namespace OOP_Project
             
             return s;
         }
-
+        
+        /*
         public override bool Equals(object obj)
         {
             if (!(obj is Regular r)) return false;
@@ -66,5 +67,6 @@ namespace OOP_Project
 
             return result;
         }
+        */
     }
 }

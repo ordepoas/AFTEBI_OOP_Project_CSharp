@@ -126,22 +126,19 @@ namespace OOP_Project
                 throw new MaxContainersException(
                     "\t\tEste navio já tem o máximo de contentores! Contentor não adicionado!");
             }
-            else
+            switch (c)
             {
-                switch (c)
-                {
-                    case Explosive _ when _containers.OfType<Explosive>().Count() == _maxExplosive:
-                        throw new MaxExplosiveException(
-                            "\t\tEste navio já tem o máximo de contentores do tipo Transporte de Explosivo! Contentor não adicionado!");
-                    case Chemical _ when _containers.OfType<Chemical>().Count() == _maxChemical:
-                        throw new MaxChemicalException(
-                            "\t\tEste navio já tem o máximo de contentores do tipo Transporte de Químicos!" +
-                            " Contentor não adicionado!"
-                        );
-                    default:
-                        _containers.Add(c);
-                        break;
-                }
+                case Explosive _ when _containers.OfType<Explosive>().Count() == _maxExplosive:
+                    throw new MaxExplosiveException(
+                        "\t\tEste navio já tem o máximo de contentores do tipo Explosivo! Contentor não adicionado!");
+                case Chemical _ when _containers.OfType<Chemical>().Count() == _maxChemical:
+                    throw new MaxChemicalException(
+                        "\t\tEste navio já tem o máximo de contentores do tipo Químico!" +
+                        " Contentor não adicionado!"
+                    );
+                default:
+                    _containers.Add(c);
+                    break;
             }
         }
 

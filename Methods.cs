@@ -632,7 +632,7 @@ namespace OOP_Project
                         try
                         {
                             containers.Add(explosive);
-                            Console.WriteLine("\t\tContentor adicionado com sucesso!!");
+                            Console.WriteLine("\n\t\tContentor adicionado com sucesso!!");
                             Console.Write("\n\t\tPrima uma tecla para continuar...");
                             Console.ReadLine();
                         }
@@ -670,7 +670,7 @@ namespace OOP_Project
                         try
                         {
                             containers.Add(chemical);
-                            Console.WriteLine("\t\tContentor adicionado com sucesso!!");
+                            Console.WriteLine("\n\t\tContentor adicionado com sucesso!!");
                             Console.Write("\n\t\tPrima uma tecla para continuar...");
                             Console.ReadLine();
                         }
@@ -1020,6 +1020,9 @@ namespace OOP_Project
             } while (!success);
 
             auxShip = ships.Find(s => s.GetNumber() == option);
+            
+            auxShip.GetContainers().Add(auxContainer);
+            
             try
             {
                 auxContainer.SetShipNumber(auxShip.GetNumber());
@@ -1178,6 +1181,10 @@ namespace OOP_Project
 
                 auxContainer = containers.Find(x => x.GetShipNumber() == auxShip.GetNumber());
                 auxContainer.SetShipNumber(-1);
+                
+                Console.WriteLine("\t\tContentor removido com sucesso!");
+                Console.Write("\n\t\tPrima uma tecla para continuar");
+                Console.ReadLine();
             }
             catch (Exception e)
             {

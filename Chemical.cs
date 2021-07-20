@@ -42,7 +42,7 @@ namespace OOP_Project
 
             return s;
         }
-
+        /*
         public override bool Equals(object obj)
         {
             if (!(obj is Chemical e)) return false;
@@ -50,5 +50,6 @@ namespace OOP_Project
 
             return result;
         }
+        */
     }
 }
