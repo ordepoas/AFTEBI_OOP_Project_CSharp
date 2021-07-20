@@ -42,7 +42,17 @@ Com a opção sair não aceita numeros.... //---- OK
 
 atribuir contentor a navio a listagem não faz break //---- OK
 
-contentor duplicado no FCPorto
- verificar add container //---- OK
+contentor duplicado no FCPorto  //---- OK
+ verificar add container
  verificar add container to ship 
  verificar remove container from ship
+ 
+ Menu Backup
+    Se opção em número apresenta opção inválida --ok
+    Se opção em letra apenas pede opção-- ko
+ 
+ Menu Restore
+    Se opção em número apresenta opção inválida --ok
+    Se opção em letra apenas pede opção-- ko
+    
+ O problema anterior reflecte-se nos outros menus

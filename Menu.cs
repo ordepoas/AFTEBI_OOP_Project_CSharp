@@ -17,6 +17,9 @@ namespace OOP_Project
             {
                 Console.Write("\n\t\tIndique a sua opção: ");
                 success = int.TryParse(Console.ReadLine(), out option);
+                
+                if(!success) 
+                    Console.WriteLine("\t\tOpção inválida!");
                 if (success && (option != 1 && option != 2))
                 {
                     Console.WriteLine("\t\tOpção inválida!");
@@ -40,6 +43,8 @@ namespace OOP_Project
             {
                 Console.Write("\n\t\tIndique a sua opção: ");
                 success = int.TryParse(Console.ReadLine(), out option);
+                if(!success) 
+                    Console.WriteLine("\t\tOpção inválida!");
                 if (success && (option != 1 && option != 2))
                 {
                     Console.WriteLine("\t\tOpção inválida!");
@@ -66,6 +71,8 @@ namespace OOP_Project
             {
                 Console.Write("\n\t\tIndique a sua opção: ");
                 success = int.TryParse(Console.ReadLine(), out option);
+                if(!success) 
+                    Console.WriteLine("\t\tOpção inválida!");
                 if (success && (option < 0 || option > 2))
                 {
                     Console.WriteLine("\t\tOpção inválida!");
@@ -127,7 +134,8 @@ namespace OOP_Project
             {
                 Console.Write("\n\t\tIndique a sua opção: ");
                 success = int.TryParse(Console.ReadLine(), out option);
-                Console.WriteLine();
+                if(!success) 
+                    Console.WriteLine("\t\tOpção inválida!");
                 if (success && (option < 0 || option > 9))
                 {
                         Console.WriteLine("\t\tOpção inválida!");
@@ -198,6 +206,8 @@ namespace OOP_Project
             {
                 Console.Write("\n\t\tIndique a sua opção: ");
                 success = int.TryParse(Console.ReadLine(), out option);
+                if(!success) 
+                    Console.WriteLine("\t\tOpção inválida!");
                 if (success && (option < 0 || option > 6))
                 {
                     if (option != 9)

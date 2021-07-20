@@ -274,7 +274,10 @@ namespace OOP_Project
                 {
                     Console.WriteLine(s);
                     counter++;
-                    RecordsPerPage(counter, 4);
+                    if (ships.Count != counter)
+                    {
+                        RecordsPerPage(counter, 4);
+                    }
                 }
             }
 
@@ -318,7 +321,9 @@ namespace OOP_Project
                     {
                         Console.WriteLine(s);
                         counter++;
-                        RecordsPerPage(counter, 4);
+                        
+                        if(shipsWithContainers != counter)
+                            RecordsPerPage(counter, 4);
                     }
                 }
             }
@@ -329,7 +334,7 @@ namespace OOP_Project
         //Método para listar os navios que estão no porto
         public static int ListShipAtSeaport(List<Ship> ships)
         {
-            int counter = 0;
+            int counter = 0, shipsAtPort;
 
             foreach (var s in ships)
             {
@@ -339,7 +344,9 @@ namespace OOP_Project
                 }
             }
 
-            if (counter > 0)
+            shipsAtPort = counter;
+            
+            if (shipsAtPort > 0)
             {
                 counter = 0;
                 Console.WriteLine("\t\t===================================== LISTA DE NAVIOS =====================================");
@@ -349,7 +356,8 @@ namespace OOP_Project
                     {
                         Console.WriteLine(s);
                         counter++;
-                        RecordsPerPage(counter, 4);
+                        if(shipsAtPort != counter)
+                          RecordsPerPage(counter, 4);
 
                     }
                 }
@@ -367,7 +375,7 @@ namespace OOP_Project
         //---- Método para listar os navios que estão ao largo
         public static int ListShipAtLarge(List<Ship> ships)
         {
-            int counter = 0;
+            int counter = 0, shipsAtLarge;
 
             foreach (var s in ships)
             {
@@ -377,7 +385,9 @@ namespace OOP_Project
                 }
             }
 
-            if (counter > 0)
+            shipsAtLarge = counter;
+            
+            if (shipsAtLarge > 0)
             {
                 counter = 0;
                 Console.WriteLine("\t\t===================================== LISTA DE NAVIOS =====================================");
@@ -387,7 +397,8 @@ namespace OOP_Project
                     {
                         Console.WriteLine(s);
                         counter++;
-                        RecordsPerPage(counter, 4);
+                        if(shipsAtLarge != counter)
+                            RecordsPerPage(counter, 4);
                     }
                 }
             }
@@ -411,22 +422,25 @@ namespace OOP_Project
             option = ListShipAtSeaport(ships);
             if (option == 0) return;
             
-            Console.Write("\n\t\tIndique o número do navio: ");
+            Console.WriteLine("\n\t\tIndique o número do navio: ");
 
             do
             {
+                Console.Write("\t\t");
                 success = int.TryParse(Console.ReadLine(), out option);
                 
                 if (success && (ships.Find(s => s.GetNumber() == option) == null))
                 {
                     Console.WriteLine("\t\tO número que indicou não existe, prima ENTER para continuar ou prima S para Sair");
                     success = false;
-                    Console.Write("\t\t");
-
+                    
                     ConsoleKeyInfo k;
+                    Console.Write("\t\t");
+                    
                     do
                     {
                         k = Console.ReadKey();
+                        
                         
                     } while (k.Key != ConsoleKey.S && k.Key != ConsoleKey.Enter);
                     
@@ -434,7 +448,6 @@ namespace OOP_Project
                     {
                         return;
                     }
-                    Console.WriteLine("\t\t");
                 }
                 
             } while (!success);
@@ -467,10 +480,11 @@ namespace OOP_Project
 
             if (shipsAtLarge == 0) return;
             
-            Console.Write("\n\t\tIndique o número do navio: ");
+            Console.WriteLine("\n\t\tIndique o número do navio: ");
 
             do
             {
+                Console.Write("\t\t");
                 success = int.TryParse(Console.ReadLine(), out option);
                 
                 if (success && (ships.Find(s => s.GetNumber() == option) == null))
@@ -491,8 +505,6 @@ namespace OOP_Project
                     {
                         return;
                     }
-                    Console.WriteLine("\t\t");
-
                 }
                 
             } while (!success);
@@ -714,7 +726,8 @@ namespace OOP_Project
                 {
                     Console.WriteLine(c);
                     counter++;
-                    RecordsPerPage(counter, 3);
+                    if(containers.Count != counter)
+                        RecordsPerPage(counter, 3);
                 }
                 Console.Write("\n\n\t\tPrima uma tecla para continuar");
                 Console.ReadLine();
@@ -874,7 +887,6 @@ namespace OOP_Project
                     {
                         return;
                     }
-                    Console.WriteLine("\t\t");
                 }
                 
             } while (!success);
@@ -925,7 +937,6 @@ namespace OOP_Project
                     {
                         return;
                     }
-                    Console.WriteLine("\t\t");
                 }
                 
             } while (!success);
@@ -938,7 +949,8 @@ namespace OOP_Project
             {
                 Console.WriteLine(c);
                 counter++;
-                RecordsPerPage(counter, 3);
+                if(aux.GetContainers().Count != counter)
+                    RecordsPerPage(counter, 3);
             }
            
             Console.Write("\t\tPrima qualquer tecla para continuar...");
@@ -982,7 +994,6 @@ namespace OOP_Project
                     {
                         return;
                     }
-                    Console.WriteLine("\t\t");
                 }
                 else
                 {
@@ -993,7 +1004,9 @@ namespace OOP_Project
 
             auxContainer = containers.Find(s => s.GetNumber().Equals(numContainer));
 
-            ListShipAtSeaport(ships);
+            option = ListShipAtSeaport(ships);
+            if(option == 0) return;
+            
             Console.WriteLine("\n\t\tIndique o número do navio: ");
 
             do
@@ -1018,7 +1031,6 @@ namespace OOP_Project
                     {
                         return;
                     }
-                    Console.WriteLine("\t\t");
                 }
                 
             } while (!success);
@@ -1092,7 +1104,6 @@ namespace OOP_Project
                     {
                         return;
                     }
-                    Console.WriteLine("\t\t");
                 }
                 
             } while (!success);
@@ -1166,7 +1177,6 @@ namespace OOP_Project
                     {
                         return;
                     }
-                    Console.WriteLine("\t\t");
                 }
                 else
                 {
@@ -1201,7 +1211,7 @@ namespace OOP_Project
         //---- Método para listar os contentoes sem navio atribuido
         public static int UnassignedContainers(List<Container> containers)
         {
-            int counter = 0;
+            int counter = 0, unassignedContainersCount;
             
             if (containers.Count == 0)
             {
@@ -1220,7 +1230,9 @@ namespace OOP_Project
                 }
             }
 
-            if (counter > 0)
+            unassignedContainersCount = counter;
+            
+            if (unassignedContainersCount > 0)
             {
                 Console.WriteLine("\t\t===================================== LISTA DE CONTENTORES =====================================");
                 counter = 0;
@@ -1228,7 +1240,8 @@ namespace OOP_Project
                 {
                     Console.WriteLine(c);
                     counter++;
-                    RecordsPerPage(counter, 3);
+                    if(unassignedContainersCount != counter)
+                        RecordsPerPage(counter, 3);
                 }
                 Console.Write("\n\t\tPrima qualquer tecla para continuar...");
                 Console.ReadLine();
@@ -1251,7 +1264,7 @@ namespace OOP_Project
         {
             if (numberOfRecords % recordsPerPage == 0)
             {
-                Console.Write("\n\t\tPrima uma tecla para mais registos... ");
+                Console.Write("\n\t\tPrima uma Enter para mais registos... ");
                 Console.ReadLine();
                 Console.WriteLine("\n\t\t*********************************************************************************************");
             }
