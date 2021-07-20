@@ -117,7 +117,7 @@ namespace OOP_Project
             Console.WriteLine("\t\t(3) Chamar navio ao porto");
             Console.WriteLine("\t\t(4) Número Navios no porto");
             Console.WriteLine("\t\t(5) Número Navios ao Largo");
-            Console.WriteLine("\t\t(6) Listar Números de contentores de um navio");
+            Console.WriteLine("\t\t(6) Listar Número de contentores de um navio");
             Console.WriteLine("\t\t(7) Listar todos os contentores de um navio");
             Console.WriteLine("\t\t(8) Listar todos os navios");
             Console.WriteLine("\n\t\t(9) Menu Anterior");

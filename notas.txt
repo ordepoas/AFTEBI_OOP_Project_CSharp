@@ -41,3 +41,8 @@ Menu -> Navios 6 e 7 só devem apresentar navios com contentores.// ----OK
 Com a opção sair não aceita numeros.... //---- OK
 
 atribuir contentor a navio a listagem não faz break //---- OK
+
+contentor duplicado no FCPorto
+ verificar add container //---- OK
+ verificar add container to ship 
+ verificar remove container from ship

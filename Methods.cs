@@ -200,18 +200,29 @@ namespace OOP_Project
 
             do
             {
-                Console.Write("\t\tCapacidade total para contentores de Explosivos: ");
-                success = int.TryParse(Console.ReadLine(), out maxExplosive);
+                do
+                {
+                    Console.Write("\t\tCapacidade total para contentores de Explosivos: ");
+                    success = int.TryParse(Console.ReadLine(), out maxExplosive);
+
+                } while (!success);
+
+                do
+                {
+                    Console.Write("\t\tCapacidade total para contentores de Químicos: ");
+                    success = int.TryParse(Console.ReadLine(), out maxChemical);
+
+                } while (!success);
+
+                if (maxChemical + maxExplosive > maxContainers)
+                {
+                    Console.WriteLine("\t\tO número maxímo de contentores Químicos e Explosivos não pode exceder" +
+                                      " o total de contentores do navio");
+                    success = false;
+                }
 
             } while (!success);
-            
-            do
-            {
-                Console.Write("\t\tCapacidade total para contentores de Químicos: ");
-                success = int.TryParse(Console.ReadLine(), out maxChemical);
 
-            } while (!success);
-            
             Console.Write("\t\tBandeira: ");
             flag = Console.ReadLine();
 
@@ -869,18 +880,11 @@ namespace OOP_Project
             } while (!success);
 
             aux = ships.Find(s => s.GetNumber() == option);
-            if (aux.GetContainers().Count == 0)
-            {
-                Console.WriteLine("\n\t\tNão existem contentores no navio {0}", aux.GetName());
-            }
-            else
-            {
-                foreach (var c in aux.GetContainers())
-                {
-                    Console.Write("\t\t---- Lista de contentores ----");
-                    Console.WriteLine(c.GetNumber());
-                }
-            }
+            
+            Console.Write("\t\t---- Contentores no navio ----\n");
+            Console.WriteLine("\t\tTotal: {0}/{1}",aux.GetContainers().Count,aux.GetMaxContainers()) ;
+            Console.WriteLine("\t\tExplosivo: {0}/{1}", aux.GetContainers().OfType<Explosive>().Count(), aux.GetMaxExplosive());
+            Console.WriteLine("\t\tQuímico: {0}/{1}", aux.GetContainers().OfType<Chemical>().Count(), aux.GetMaxChemical());
             
             Console.Write("\n\t\tPrima qualquer tecla para continuar...");
             Console.ReadLine();
@@ -1020,8 +1024,6 @@ namespace OOP_Project
             } while (!success);
 
             auxShip = ships.Find(s => s.GetNumber() == option);
-            
-            auxShip.GetContainers().Add(auxContainer);
             
             try
             {

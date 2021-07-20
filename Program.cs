@@ -8,6 +8,7 @@ namespace OOP_Project
     {
         static void Main(string[] args)
         {
+            Console.Clear();
             string[] logo = File.ReadAllLines("logo.txt");
             foreach (string line in logo)
             {
