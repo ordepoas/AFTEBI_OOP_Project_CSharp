@@ -22,7 +22,7 @@ namespace OOP_Project
             _type = type;
         }
 
-        public string GetType()
+        public string GetNewType()
         {
             return _type;
         }
@@ -35,21 +35,12 @@ namespace OOP_Project
         public override string ToString()
         {
             var s = base.ToString();
-            s += "\n\t\t\t------------------";
             s += "\n\t\t\tCarga Química";
             s += "\n\t\t\tDescrição do químico: " + _type;
             s += "\n\t\t---------------------------------------------------------------------------------------------";
 
             return s;
         }
-        /*
-        public override bool Equals(object obj)
-        {
-            if (!(obj is Chemical e)) return false;
-            bool result = _type.Equals(e._type);
 
-            return result;
-        }
-        */
     }
 }

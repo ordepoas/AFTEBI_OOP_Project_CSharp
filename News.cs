@@ -17,45 +17,7 @@ namespace OOP_Project
         public string image_16x9 { get; set; }
         public string url { get; set; }
         public object authors { get; set; }
-
-
-        public static void GetNews()
-        {
-            try
-            {
-                WebRequest request = HttpWebRequest.Create("https://observador.pt/wp-json/obs_api/v4/news/widget");
-                WebResponse response = request.GetResponse();
-                StreamReader reader = new StreamReader(response.GetResponseStream());
-
-                string strJson = reader.ReadToEnd();
-
-                List<News> latestestNews = JsonConvert.DeserializeObject<List<News>>(strJson);
-
-                int counter = 0;
-                Console.WriteLine();
-                Console.WriteLine("\t\t--------------------------------- Últimas Notícias ---------------------------------");
-                foreach (var news in latestestNews)
-                {
-                    Console.WriteLine(news);
-                    counter++;
-                    if(latestestNews.Count != counter)
-                        Methods.RecordsPerPage(counter, 4);
-                }
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                Console.Write("\n\t\tPrima uma tecla para continuar...");
-                Console.ReadKey();
-
-            }
-
-
-            Console.Write("\n\t\tPrima uma tecla para continuar...");
-            Console.ReadKey();
-        }
-
+        
         public override string ToString()
         {
             string s = "\t\tTítulo: " + title;

@@ -48,7 +48,6 @@ namespace OOP_Project
         public override string ToString()
         {
             var s = base.ToString();
-            s += "\n\t\t\t------------------";
             s += "\n\t\t\tCarga Regular";
             s += "\n\t\t\tDescrição: " + _description;
             s += "\n\t\t\tRefrigerado: " + (_isRefrigerated? "Sim" : "Não");
@@ -57,16 +56,5 @@ namespace OOP_Project
             return s;
         }
         
-        /*
-        public override bool Equals(object obj)
-        {
-            if (!(obj is Regular r)) return false;
-            var result =
-                _description.Equals(r._description) &&
-                _isRefrigerated == r._isRefrigerated;
-
-            return result;
-        }
-        */
     }
 }

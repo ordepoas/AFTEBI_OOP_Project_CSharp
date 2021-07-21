@@ -86,6 +86,7 @@ namespace OOP_Project
             {
                 s += "\n\t\tNavio: " + ShipNumber;
             }
+            s += "\n\t\t\t------------------";
             return s;
         }
 

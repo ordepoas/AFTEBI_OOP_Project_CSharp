@@ -47,12 +47,15 @@ contentor duplicado no FCPorto  //---- OK
  verificar add container to ship 
  verificar remove container from ship
  
- Menu Backup
+ Menu Backup // --- OK
     Se opção em número apresenta opção inválida --ok
     Se opção em letra apenas pede opção-- ko
  
- Menu Restore
+ Menu Restore // ---- OK
     Se opção em número apresenta opção inválida --ok
     Se opção em letra apenas pede opção-- ko
     
  O problema anterior reflecte-se nos outros menus
+ 
+ 
+ Trocar ReadLine por ReadKey

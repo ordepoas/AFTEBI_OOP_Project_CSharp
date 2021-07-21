@@ -27,7 +27,7 @@ namespace OOP_Project
             _isPlasticExplosive = isPlasticExplosive;
         }
 
-        public string GetType()
+        public string GetNewType()
         {
             return _type;
         }
@@ -50,7 +50,6 @@ namespace OOP_Project
         public override string ToString()
         {
             var s = base.ToString();
-            s += "\n\t\t\t------------------";
             s += "\n\t\t\tCarga Explosiva";
             s += "\n\t\t\tDescrição do explosivo: " + _type;
             s += "\n\t\t\tExplosivo Plástico: " + (_isPlasticExplosive? "Sim" : "Não");
@@ -59,16 +58,5 @@ namespace OOP_Project
             return s;
         }
 
-        /*
-        public override bool Equals(object obj)
-        {
-            if (!(obj is Explosive e)) return false;
-            bool result =
-                _type.Equals(e._type) &&
-                _isPlasticExplosive == e._isPlasticExplosive;
-
-            return result;
-        }
-        */
     }
 }

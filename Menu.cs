@@ -56,17 +56,20 @@ namespace OOP_Project
             return option;
         }
         
-        public static int MainMenu(List<Ship> ships, List<Container> containers)
+        public static int MainMenu(Seaport s)
         {
             bool success;
             int option;
             
             Console.Clear();
-            Console.WriteLine("\t\t====== MENU PRINCIPAL ======");
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine("\t\t====== MENU PRINCIPAL ======\t\t");
+            Console.ResetColor();
             Console.WriteLine("\t\t(1) Gerir navios");
             Console.WriteLine("\t\t(2) Gerir Contentores");
-            Console.WriteLine("\t\t(3) Notícias");
-            Console.WriteLine("\n\t\t(0) Sair");
+            Console.WriteLine("\n\t\t(9) Tempo e notícias");
+            Console.WriteLine("\t\t(0) Sair");
             
             do
             {
@@ -74,10 +77,13 @@ namespace OOP_Project
                 success = int.TryParse(Console.ReadLine(), out option);
                 if(!success) 
                     Console.WriteLine("\t\tOpção inválida!");
-                if (success && (option < 0 || option > 3))
+                if (success && (option < 0 || option > 2))
                 {
-                    Console.WriteLine("\t\tOpção inválida!");
-                    success = false;
+                    if (option != 9)
+                    {
+                        Console.WriteLine("\t\tOpção inválida!");
+                        success = false;
+                    }
                 }
                 
             } while (!success);
@@ -91,7 +97,7 @@ namespace OOP_Project
                 case 1 :
                     do
                     {
-                        option = MenuShips(ships, containers);
+                        option = MenuShips(s);
                         success = (option == 0) || (option == 9);
 
                     } while (!success);
@@ -101,27 +107,32 @@ namespace OOP_Project
                 case 2 :
                     do
                     {
-                        option = MenuContainers(ships, containers);
+                        option = MenuContainers(s);
                         success = (option == 0) || (option == 9);
 
                     } while (!success);
                     break;
-                case 3 :
-                    News.GetNews();
+                case 9 :
+                    Console.Clear();
+                    Methods.GetWeather();
+                    Methods.GetNews();
                     break;
             }
 
             return option;
         }
 
-        public static int MenuShips(List<Ship> ships, List<Container> containers)
+        public static int MenuShips(Seaport s)
         {
             int option;
             
             bool success;
 
             Console.Clear();
-            Console.WriteLine("\t\t=================== GERIR NAVIOS ===================");
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine("\t\t=================== GERIR NAVIOS ===================\t\t");
+            Console.ResetColor();
             Console.WriteLine("\t\t(1) Entrada de navio");
             Console.WriteLine("\t\t(2) Saída de navio");
             Console.WriteLine("\t\t(3) Chamar navio ao porto");
@@ -155,47 +166,50 @@ namespace OOP_Project
                     break;
                 //Adicionar Navio
                 case 1:
-                    Methods.AddShip(ships);
+                    Methods.AddShip(s);
                     break;
                 //Listar e remover navio
                 case 2:
-                    Methods.RemoveShip(ships);
+                    Methods.RemoveShip(s);
                     break;
                 //Chamar navio ao porto
                 case 3:
-                    Methods.CallShipToSeaport(ships);
+                    Methods.CallShipToSeaport(s);
                     break;
                 //Navios no porto
                 case 4:
-                    Methods.CountShipsAtSeaport(ships);
+                    Methods.CountShipsAtSeaport(s);
                     break;
                 //Navios ao largo
                 case 5:
-                    Methods.CountShipsAtLarge(ships);
+                    Methods.CountShipsAtLarge(s);
                     break;
                 //Lista navios e indica o numero de contentores no navio indicado
                 case 6:
-                    Methods.ListContainerNumberAtShip(ships);
+                    Methods.ListContainerNumberAtShip(s);
                     break;
                 //Lista navios e lista os contentores no navio indicado
                 case 7:
-                    Methods.ListContainersAtShip(ships);
+                    Methods.ListContainersAtShip(s);
                     break;
                 case 8:
-                    Methods.ListShipAll(ships);
+                    Methods.ListShipAll(s);
                     break;
             }
 
             return option;
         }
 
-        public static int MenuContainers(List<Ship> ships, List<Container> containers)
+        public static int MenuContainers(Seaport s)
         {
             bool success;
             int option, counter = 0;
 
             Console.Clear();
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine("\t\t=================== GERIR CONTENTORES ===================");
+            Console.ResetColor();
             Console.WriteLine("\t\t(1) Entrada de contentor");
             Console.WriteLine("\t\t(2) Saída de contentores");
             Console.WriteLine("\t\t(3) Atribuir um contentor a um navio");
@@ -230,30 +244,30 @@ namespace OOP_Project
                     break;
                 //Adicionar contentor
                 case 1:
-                    Methods.AddContainer(containers);
+                    Methods.AddContainer(s);
                     break;                
                 //Remover contentor
                 case 2:
-                        Methods.RemoveContainer(containers);
+                        Methods.RemoveContainer(s);
                     break;
                 
                 //Atribuir contentor a um navio;
                 case 3:
-                        Methods.AddContainerToShip(ships, containers);
+                        Methods.AddContainerToShip(s);
                     break;
                 
                 //Retirar contentor de um navio;
                 case 4:
-                    Methods.RemoveContainerFromShip(ships, containers);
+                    Methods.RemoveContainerFromShip(s);
                     break;
 
                 //Listar contentores não atribuídos
                 case 5:
-                    Methods.UnassignedContainers(containers);
+                    Methods.UnassignedContainers(s);
                     break;
                 //listar todos os contentores;
                 case 6 :
-                    Methods.ListContainers(containers);
+                    Methods.ListContainers(s);
                     break;
             }
             return option;

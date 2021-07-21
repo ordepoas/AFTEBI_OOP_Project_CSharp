@@ -5,56 +5,60 @@ using System.Runtime.Serialization;
 namespace OOP_Project
 {
     [Serializable][DataContract (Name = "Estado")]
-    public class State
+    public class Seaport
     {
         [DataMember (Name = "Navios")]
-        private List<Ship> _ships;
+        public List<Ship> Ships;
         [DataMember (Name = "Contentores")]
-        private List<Container> _containers;
-        
-        public State(){}
+        public List<Container> Containers;
 
-        public State(List<Ship> ships, List<Container> containers)
+        public Seaport()
         {
-            _ships = ships;
-            _containers = containers;
+            Ships = new List<Ship>();
+            Containers = new List<Container>();
+        }
+
+        public Seaport(List<Ship> ships, List<Container> containers)
+        {
+            Ships = ships;
+            Containers = containers;
         }
 
         public List<Ship> GetShips()
         {
-            return _ships;
+            return Ships;
         }
 
         public void SetShips(List<Ship> ships)
         {
-            _ships = ships;
+            Ships = ships;
         }
         
         public List<Container> GetContainers()
         {
-            return _containers;
+            return Containers;
         }
 
         public void SetContainers(List<Container> containers)
         {
-            _containers = containers;
+            Containers = containers;
         }
 
         public override string ToString()
         {
-            string s = _ships.ToString();
-            string c = _containers.ToString();
+            string s = Ships.ToString();
+            string c = Containers.ToString();
 
             return s + c;
         }
 
         public override bool Equals(object obj)
         {
-            if (!(obj is State e)) return false;
+            if (!(obj is Seaport e)) return false;
 
             bool result =
-                _ships.Equals(e._ships) &&
-                _containers.Equals(e._containers);
+                Ships.Equals(e.Ships) &&
+                Containers.Equals(e.Containers);
 
             return result;
         }
