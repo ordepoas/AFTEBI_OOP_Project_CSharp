@@ -30,11 +30,16 @@ namespace OOP_Project
                 string strJson = reader.ReadToEnd();
 
                 List<News> latestestNews = JsonConvert.DeserializeObject<List<News>>(strJson);
+
+                int counter = 0;
                 Console.WriteLine();
                 Console.WriteLine("\t\t--------------------------------- Últimas Notícias ---------------------------------");
                 foreach (var news in latestestNews)
                 {
                     Console.WriteLine(news);
+                    counter++;
+                    if(latestestNews.Count != counter)
+                        Methods.RecordsPerPage(counter, 4);
                 }
 
             }
