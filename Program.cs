@@ -1,6 +1,8 @@
-﻿using System;
+﻿//using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 
 namespace OOP_Project
 {
@@ -16,7 +18,11 @@ namespace OOP_Project
             }
             Console.Write("\t\tPrima uma tecla para continuar...");
             Console.ReadKey();
+            //------------------------------------------------------------------------------------------------
+
             
+            
+            //------------------------------------------------------------------------------------------------
             List<Ship> ships = new List<Ship>();
             List<Container> containers = new List<Container>();
             State seaportState = new State(ships, containers);

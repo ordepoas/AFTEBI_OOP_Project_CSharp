@@ -65,6 +65,7 @@ namespace OOP_Project
             Console.WriteLine("\t\t====== MENU PRINCIPAL ======");
             Console.WriteLine("\t\t(1) Gerir navios");
             Console.WriteLine("\t\t(2) Gerir Contentores");
+            Console.WriteLine("\t\t(3) Notícias");
             Console.WriteLine("\n\t\t(0) Sair");
             
             do
@@ -73,7 +74,7 @@ namespace OOP_Project
                 success = int.TryParse(Console.ReadLine(), out option);
                 if(!success) 
                     Console.WriteLine("\t\tOpção inválida!");
-                if (success && (option < 0 || option > 2))
+                if (success && (option < 0 || option > 3))
                 {
                     Console.WriteLine("\t\tOpção inválida!");
                     success = false;
@@ -104,7 +105,9 @@ namespace OOP_Project
                         success = (option == 0) || (option == 9);
 
                     } while (!success);
-
+                    break;
+                case 3 :
+                    News.GetNews();
                     break;
             }
 
