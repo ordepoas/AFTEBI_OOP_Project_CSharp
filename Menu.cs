@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace OOP_Project
 {
     public class Menu
-    {
+    {   //---- Método para apresentação do menu de restauro do estado do porto devolve um int com a opção escolhida
         public static int RestoreMenu()
         {
             bool success;
@@ -12,7 +12,7 @@ namespace OOP_Project
             
             Console.WriteLine("\t\tDeseja fazer 'restore' do Estado do porto?");
             Console.WriteLine("\t\t(1) - Sim | (2) - Não");
-
+            //---- recolha e validação de opção
             do
             {
                 Console.Write("\n\t\tIndique a sua opção: ");
@@ -30,7 +30,7 @@ namespace OOP_Project
 
             return option;
         }
-        
+        //---- Método para apresentação do menu de backup do estado do porto devolve um int com a opção escolhida
         public static int BackupMenu()
         {
             bool success;
@@ -38,7 +38,7 @@ namespace OOP_Project
             Console.Clear();
             Console.WriteLine("\t\tDeseja fazer 'backup' do Estado do porto?");
             Console.WriteLine("\t\t(1) - Sim | (2) - Não");
-
+            //---- recolha e validação da opção escolhida
             do
             {
                 Console.Write("\n\t\tIndique a sua opção: ");
@@ -55,7 +55,7 @@ namespace OOP_Project
 
             return option;
         }
-        
+        //---- Método - Menu Principal, devolve um int com a opção escolhida e recebe um objeto Seaport
         public static int MainMenu(Seaport s)
         {
             bool success;
@@ -70,7 +70,7 @@ namespace OOP_Project
             Console.WriteLine("\t\t(2) Gerir Contentores");
             Console.WriteLine("\n\t\t(9) Tempo e notícias");
             Console.WriteLine("\t\t(0) Sair");
-            
+            //---- Recolha e validação da opção escolhida
             do
             {
                 Console.Write("\n\t\tIndique a sua opção: ");
@@ -87,7 +87,7 @@ namespace OOP_Project
                 }
                 
             } while (!success);
-
+            //---- chamada de instruções de acordo com as escolhas do menu
             switch (option)
             {
                 //Sair do programa / Acede ao Menu de backup
@@ -121,7 +121,7 @@ namespace OOP_Project
 
             return option;
         }
-
+        //---- Método - Menu Navios, devolve um int com a opção escolhida e recebe um objeto Seaport
         public static int MenuShips(Seaport s)
         {
             int option;
@@ -143,7 +143,7 @@ namespace OOP_Project
             Console.WriteLine("\t\t(8) Listar todos os navios");
             Console.WriteLine("\n\t\t(9) Menu Anterior");
             Console.WriteLine("\t\t(0) Sair");
-
+            //recolha e validação da opção
             do
             {
                 Console.Write("\n\t\tIndique a sua opção: ");
@@ -157,7 +157,7 @@ namespace OOP_Project
                 }
                 
             } while (!success);
-            
+            //---- chamada de métodos de acordo com a opção escolhida
             switch (option)
             {
                 //Saí do programa acedendo ao Menu de Backup ou retorna ao menu anterior
@@ -199,7 +199,7 @@ namespace OOP_Project
 
             return option;
         }
-
+        //---- Método - Menu COntentores, devolve um int com a opção escolhida e recebe um objeto Seaport
         public static int MenuContainers(Seaport s)
         {
             bool success;
@@ -218,7 +218,7 @@ namespace OOP_Project
             Console.WriteLine("\t\t(6) Listar todos os contentores");
             Console.WriteLine("\n\t\t(9) Menu Anterior");
             Console.WriteLine("\t\t(0) Sair");
-
+            //recolha e validação da opção escolhida
             do
             {
                 Console.Write("\n\t\tIndique a sua opção: ");
@@ -235,7 +235,7 @@ namespace OOP_Project
                 }
 
             } while (!success);
-            
+            //---- chamada de métodos de acordo com a opção escolhida
             switch (option)
             {
                 //Sai do programa acedendo ao menu de backup ou fica no menu anterior

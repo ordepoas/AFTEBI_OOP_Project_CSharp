@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace OOP_Project
 {
     [Serializable][DataContract (Name = "Navio")]
-    public class Ship
+    public class Ship //---- Classe para objetos tipo Navio
     {
         [DataMember (Name = "Nome")]
         private string _name;

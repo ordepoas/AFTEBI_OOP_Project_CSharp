@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace OOP_Project
 {
-    public class News
+    public class News //---- class para criar um objecto que recebe dados JSON da internet 
     {
         public int id { get; set; }
         public string title { get; set; }
@@ -20,9 +20,10 @@ namespace OOP_Project
         
         public override string ToString()
         {
-            string s = "\t\tTítulo: " + title;
-            s += "\n\t\tPublicado em: " + publish_date;
-            s += "\n\t\t------------";
+            string s = "Título: " + title;
+            s += "\n" + lead;
+            s += "\nPublicado em: " + publish_date;
+            s += "\n------------";
 
             return s;
         }

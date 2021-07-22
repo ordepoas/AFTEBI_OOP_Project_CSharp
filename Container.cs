@@ -9,7 +9,7 @@ namespace OOP_Project
     [KnownType(typeof(Explosive))]
     [KnownType(typeof(Chemical))]
     
-    public abstract class Container
+    public abstract class Container //---- super-classe de contentores
     {
         [DataMember (Name = "Numero Navio")]
         protected int ShipNumber;
@@ -20,8 +20,9 @@ namespace OOP_Project
         [DataMember (Name = "Peso")]
         protected int Weight;
         
+        //---- COnstrutor vazio
         public Container(){}
-
+        //---- Construtor - o número de contentor é atribuído automaticamente
         public Container( string destination, int weight)
         {
             ShipNumber = -1;

@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace OOP_Project
 {
     [Serializable][DataContract (Name = "Regular")]
-    public class Regular : Container
+    public class Regular : Container //---- subclasse do contentor
     {
         [DataMember (Name = "Descrição")]
         private string _description;

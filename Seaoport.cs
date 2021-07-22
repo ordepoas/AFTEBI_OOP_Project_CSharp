@@ -5,7 +5,8 @@ using System.Runtime.Serialization;
 namespace OOP_Project
 {
     [Serializable][DataContract (Name = "Estado")]
-    public class Seaport
+    public class Seaport //---- classe para instanciar um objeto que recolha a informação do porto em duas listas  
+                        // uma de navios e uma de contentores
     {
         [DataMember (Name = "Navios")]
         public List<Ship> Ships;

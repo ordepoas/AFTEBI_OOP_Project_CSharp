@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace OOP_Project
 {
-    public class WeatherTypeDetails
+    public class WeatherTypeDetails //---- class para criar um objecto que recebe dados JSON da internet 
     {
         public string descIdWeatherTypeEN { get; set; }
         public string descIdWeatherTypePT { get; set; }

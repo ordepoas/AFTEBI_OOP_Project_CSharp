@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace OOP_Project
 {
-    public class Weather
+    public class Weather //---- class para criar um objecto que recebe dados JSON da internet 
     {
         public string owner { get; set; }
         public string country { get; set; }

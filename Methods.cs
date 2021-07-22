@@ -211,11 +211,11 @@ namespace OOP_Project
             bool success;
             string name, flag;
             int maxContainers, maxExplosive, maxChemical;
-
+            
             Console.WriteLine("\t\tInsira os dados do navio");
             Console.Write("\t\tNome: ");
             name = Console.ReadLine();
-
+    
             do
             {
                 Console.Write("\t\tCapacidade total de contentores: ");
@@ -1467,6 +1467,7 @@ namespace OOP_Project
                 StreamReader reader = new StreamReader(response.GetResponseStream());
 
                 string strJson = reader.ReadToEnd();
+                response.Close();
 
                 WeatherType weatherType = JsonConvert.DeserializeObject<WeatherType>(strJson);
                 return weatherType;
@@ -1495,6 +1496,7 @@ namespace OOP_Project
                 StreamReader reader = new StreamReader(response.GetResponseStream());
 
                 string strJson = reader.ReadToEnd();
+                response.Close();
 
                 List<News> latestestNews = JsonConvert.DeserializeObject<List<News>>(strJson);
 
@@ -1509,7 +1511,7 @@ namespace OOP_Project
                     Console.WriteLine(news);
                     counter++;
                     if(latestestNews.Count != counter)
-                        Methods.RecordsPerPage(counter, 4);
+                        RecordsPerPage(counter, 3);
                 }
 
                 Console.ForegroundColor = ConsoleColor.Cyan;
