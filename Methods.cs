@@ -35,8 +35,10 @@ namespace OOP_Project
             {
                 Console.Write("\t\t");
                 Console.WriteLine(e.Message);
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\t\tPrima qualquer tecla para continuar...");
-                Console.ReadLine();
+                Console.ReadKey();
+                Console.ResetColor();
 
             }
 
@@ -58,8 +60,10 @@ namespace OOP_Project
             {
                 Console.Write("\t\t");
                 Console.WriteLine(e.Message);
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\t\tPrima qualquer tecla para continuar...");
-                Console.ReadLine();
+                Console.ReadKey();
+                Console.ResetColor();
 
             }
 
@@ -80,8 +84,10 @@ namespace OOP_Project
             {
                 Console.Write("\t\t");
                 Console.WriteLine(e.Message);
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\t\tPrima qualquer tecla para continuar...");
-                Console.ReadLine();
+                Console.ReadKey();
+                Console.ResetColor();
             }
 
         }
@@ -108,19 +114,25 @@ namespace OOP_Project
                 {
                     Console.Write("\t\t");
                     Console.WriteLine(e.Message);
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.Write("\t\tPrima qualquer tecla para continuar...");
-                    Console.ReadLine();
+                    Console.ReadKey();
+                    Console.ResetColor();
                 }
 
                 Console.WriteLine("\t\tRestore efetuado com sucesso!");
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\t\tPrima uma tecla para continuar...");
-                Console.ReadLine();
+                Console.ReadKey();
+                Console.ResetColor();
                 return s;
             }
 
             Console.WriteLine("O ficheiro JSON para 'restore' não existe!");
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("\t\tPrima uma tecla para continuar...");
-            Console.ReadLine();
+            Console.ReadKey();
+            Console.ResetColor();
 
             //---- Restore from TXT
 
@@ -141,14 +153,18 @@ namespace OOP_Project
                 {
                     Console.Write("\t\t");
                     Console.WriteLine(e.Message);
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.Write("\t\tPrima qualquer tecla para continuar...");
-                    Console.ReadLine();
+                    Console.ReadKey();
+                    Console.ResetColor();
                 }
             }
 
             Console.WriteLine("O ficheiro TXT para 'restore' não existe!");
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("\t\tPrima uma tecla para continuar...");
-            Console.ReadLine();
+            Console.ReadKey();
+            Console.ResetColor();
 
             //---- Restore from XML
 
@@ -172,14 +188,18 @@ namespace OOP_Project
                 }
 
                 Console.WriteLine("\t\tRestore efetuado com sucesso!");
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\t\tPrima uma tecla para continuar...");
-                Console.ReadLine();
+                Console.ReadKey();
+                Console.ResetColor();
 
             }
 
             Console.WriteLine("O ficheiro para 'restore' não existe!");
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("\t\tPrima uma tecla para continuar...");
-            Console.ReadLine();
+            Console.ReadKey();
+            Console.ResetColor();
 
             return s;
         }
@@ -237,9 +257,11 @@ namespace OOP_Project
             {
                 Console.WriteLine("\t\tEste navio já existe!");
                 Console.WriteLine("\n\t\tNavio não adicionado!");
-                Console.WriteLine("\n\t\tPrima um enter para continuar");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("\n\t\tPrima ums tecla para continuar");
                 Console.Write("\t\t");
-                Console.ReadLine();
+                Console.ReadKey();
+                Console.ResetColor();
             }
             else
             {
@@ -247,16 +269,20 @@ namespace OOP_Project
                 {
                     s.Ships.Add(auxShip);
                     Console.WriteLine("\t\tNavio adicionado com sucesso!!");
-                    Console.WriteLine("\n\t\tPrima um enter para continuar");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("\n\t\tPrima uma tecla para continuar");
                     Console.Write("\t\t");
-                    Console.ReadLine();
+                    Console.ReadKey();
+                    Console.ResetColor();
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
-                    Console.WriteLine("\n\t\tPrima um enter para continuar");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("\n\t\tPrima uma tecla para continuar");
                     Console.Write("\t\t");
-                    Console.ReadLine();
+                    Console.ReadKey();
+                    Console.ResetColor();
                 }
             }
         }
@@ -269,13 +295,19 @@ namespace OOP_Project
             if (s.Ships.Count == 0)
             {
                 Console.WriteLine("\t\tNão existem navios associados ao porto!!");
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\n\n\t\tPrima uma tecla para continuar...");
                 Console.ReadKey();
+                Console.ResetColor();
             }
             else
             {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;
                 Console.WriteLine(
-                    "\t\t===================================== LISTA DE NAVIOS =====================================");
+                    "\t\t===================================== LISTA DE NAVIOS =====================================\t\t");
+                Console.ResetColor();
+                
                 foreach (var ship in s.Ships)
                 {
                     Console.WriteLine(ship);
@@ -298,41 +330,45 @@ namespace OOP_Project
             if (s.Ships.Count == 0)
             {
                 Console.WriteLine("\t\tNão existem navios associados ao porto!!");
-                Console.Write("\n\n\t\tPrima enter para continuar...");
-                Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write("\n\n\t\tPrima uma tecla para continuar...");
+                Console.ReadKey();
+                Console.ResetColor();
 
                 return shipsWithContainers;
             }
-            else
-                Console.WriteLine(
-                    "\t\t===================================== LISTA DE NAVIOS =====================================");
-
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine(
+                "\t\t===================================== LISTA DE NAVIOS =====================================\t\t");
+            Console.ResetColor();
+            
+            foreach (var ship in s.Ships)
             {
-                foreach (var ship in s.Ships)
+                if (ship.GetContainers().Count > 0)
                 {
-                    if (ship.GetContainers().Count > 0)
-                    {
-                        shipsWithContainers++;
-                    }
+                    shipsWithContainers++;
                 }
+            }
 
-                if (shipsWithContainers == 0)
+            if (shipsWithContainers == 0)
+            {
+                Console.WriteLine("\t\tNão existem navios com contentores!");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write("\n\n\t\tPrima uma tecla para continuar...");
+                Console.ReadKey();
+                Console.ResetColor();
+            }
+
+            foreach (var ship in s.Ships)
+            {
+                if (ship.GetContainers().Count > 0)
                 {
-                    Console.WriteLine("\t\tNão existem navios com contentores!");
-                    Console.Write("\n\n\t\tPrima enter para continuar...");
-                    Console.ReadLine();
-                }
+                    Console.WriteLine(ship);
+                    counter++;
 
-                foreach (var ship in s.Ships)
-                {
-                    if (ship.GetContainers().Count > 0)
-                    {
-                        Console.WriteLine(s);
-                        counter++;
-
-                        if (shipsWithContainers != counter)
-                            RecordsPerPage(counter, 4);
-                    }
+                    if (shipsWithContainers != counter)
+                        RecordsPerPage(counter, 4);
                 }
             }
 
@@ -357,25 +393,27 @@ namespace OOP_Project
             if (shipsAtPort > 0)
             {
                 counter = 0;
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = ConsoleColor.White;
                 Console.WriteLine(
-                    "\t\t===================================== LISTA DE NAVIOS =====================================");
-                foreach (var ship in s.Ships)
+                    "\t\t===================================== LISTA DE NAVIOS =====================================\t\t");
+                Console.ResetColor();
+                
+                foreach (var ship in s.Ships.Where(ship => ship.GetIsAtPort()))
                 {
-                    if (ship.GetIsAtPort())
-                    {
-                        Console.WriteLine(s);
-                        counter++;
-                        if (shipsAtPort != counter)
-                            RecordsPerPage(counter, 4);
-
-                    }
+                    Console.WriteLine(ship);
+                    counter++;
+                    if (shipsAtPort != counter)
+                        RecordsPerPage(counter, 4);
                 }
             }
             else
             {
                 Console.WriteLine("\t\tNão existem navios no porto!!");
-                Console.Write("\n\n\t\tPrima enter para continuar...");
-                Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write("\n\n\t\tPrima uma tecla para continuar...");
+                Console.ReadKey();
+                Console.ResetColor();
             }
 
             return counter;
@@ -399,24 +437,27 @@ namespace OOP_Project
             if (shipsAtLarge > 0)
             {
                 counter = 0;
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;
                 Console.WriteLine(
-                    "\t\t===================================== LISTA DE NAVIOS =====================================");
-                foreach (var ship in s.Ships)
+                    "\t\t===================================== LISTA DE NAVIOS =====================================\t\t");
+                Console.ResetColor();
+                
+                foreach (var ship in s.Ships.Where(ship => !ship.GetIsAtPort()))
                 {
-                    if (!ship.GetIsAtPort())
-                    {
-                        Console.WriteLine(s);
-                        counter++;
-                        if (shipsAtLarge != counter)
-                            RecordsPerPage(counter, 4);
-                    }
+                    Console.WriteLine(ship);
+                    counter++;
+                    if (shipsAtLarge != counter)
+                        RecordsPerPage(counter, 4);
                 }
             }
             else
             {
                 Console.WriteLine("\t\tNão existem navios ao largo!");
-                Console.Write("\n\n\t\tPrima enter para continuar...");
-                Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write("\n\n\t\tPrima uma tecla para continuar...");
+                Console.ReadKey();
+                Console.ResetColor();
             }
 
             return counter;
@@ -471,13 +512,17 @@ namespace OOP_Project
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\n\t\tPrima uma tecla para continuar...");
-                Console.ReadLine();
+                Console.ReadKey();
+                Console.ResetColor();
             }
 
             Console.WriteLine("\n\t\tNavio registado como fora do porto!!");
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("\n\t\tPrima uma tecla para continuar...");
-            Console.ReadLine();
+            Console.ReadKey();
+            Console.ResetColor();
         }
 
         //---- Método para mudar o estado do navio para estando no porto é reutilizado noutros métods
@@ -530,14 +575,18 @@ namespace OOP_Project
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\n\t\tPrima uma tecla para continuar...");
-                Console.ReadLine();
+                Console.ReadKey();
+                Console.ResetColor();
                 return;
             }
 
             Console.WriteLine("\n\t\tNavio registado como estando no porto!!");
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("\n\t\tPrima uma tecla para continuar...");
-            Console.ReadLine();
+            Console.ReadKey();
+            Console.ResetColor();
 
         }
 
@@ -600,8 +649,10 @@ namespace OOP_Project
                     {
                         Console.WriteLine("\t\tEste contentor já existe!!");
                         Console.WriteLine("\t\tContentor não adicionado");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.Write("\n\t\tPrima uma tecla para continuar");
-                        Console.ReadLine();
+                        Console.ReadKey();
+                        Console.ResetColor();
                     }
                     else
                     {
@@ -609,14 +660,18 @@ namespace OOP_Project
                         {
                             s.Containers.Add(r);
                             Console.WriteLine("\n\t\tContentor adicionado com sucesso!!");
+                            Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.Write("\n\t\tPrima uma tecla para continuar");
-                            Console.ReadLine();
+                            Console.ReadKey();
+                            Console.ResetColor();
                         }
                         catch (Exception e)
                         {
                             Console.WriteLine(e.Message);
+                            Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.Write("\n\t\tPrima uma tecla para continuar");
-                            Console.ReadLine();
+                            Console.ReadKey();
+                            Console.ResetColor();
                         }
                     }
 
@@ -660,8 +715,10 @@ namespace OOP_Project
                     {
                         Console.WriteLine("\t\tEste contentor já existe!!");
                         Console.WriteLine("\t\tContentor não adicionado");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.Write("\n\t\tPrima uma tecla para continuar...");
-                        Console.ReadLine();
+                        Console.ReadKey();
+                        Console.ResetColor();
                     }
                     else
                     {
@@ -669,14 +726,18 @@ namespace OOP_Project
                         {
                             s.Containers.Add(explosive);
                             Console.WriteLine("\n\t\tContentor adicionado com sucesso!!");
+                            Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.Write("\n\t\tPrima uma tecla para continuar...");
-                            Console.ReadLine();
+                            Console.ReadKey();
+                            Console.ResetColor();
                         }
                         catch (Exception e)
                         {
                             Console.WriteLine(e.Message);
+                            Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.Write("\n\t\tPrima uma tecla para continuar");
-                            Console.ReadLine();
+                            Console.ReadKey();
+                            Console.ResetColor();
                         }
                     }
 
@@ -700,8 +761,10 @@ namespace OOP_Project
                     {
                         Console.WriteLine("\t\tEste contentor já existe!!");
                         Console.WriteLine("\n\t\tContentor não adicionado");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.Write("\n\t\tPrima uma tecla para continuar...");
-                        Console.ReadLine();
+                        Console.ReadKey();
+                        Console.ResetColor();
                     }
                     else
                     {
@@ -709,14 +772,18 @@ namespace OOP_Project
                         {
                             s.Containers.Add(chemical);
                             Console.WriteLine("\n\t\tContentor adicionado com sucesso!!");
+                            Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.Write("\n\t\tPrima uma tecla para continuar...");
-                            Console.ReadLine();
+                            Console.ReadKey();
+                            Console.ResetColor();
                         }
                         catch (Exception e)
                         {
                             Console.WriteLine(e.Message);
+                            Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.Write("\n\t\tPrima uma tecla para continuar");
-                            Console.ReadLine();
+                            Console.ReadKey();
+                            Console.ResetColor();
 
                         }
                     }
@@ -732,13 +799,18 @@ namespace OOP_Project
             if (s.Containers.Count == 0)
             {
                 Console.WriteLine("\n\t\tNão existem contentores no porto!!");
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\n\n\t\tPrima uma tecla para continuar");
-                Console.ReadLine();
+                Console.ReadKey();
+                Console.ResetColor();
             }
             else
             {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;
                 Console.WriteLine(
-                    "\t\t===================================== LISTA DE CONTENTORES =====================================");
+                    "\t\t===================================== LISTA DE CONTENTORES =====================================\t\t");
+                Console.ResetColor();
                 foreach (var c in s.Containers)
                 {
 
@@ -747,9 +819,11 @@ namespace OOP_Project
                     if (s.Containers.Count != counter)
                         RecordsPerPage(counter, 3);
                 }
-
+                
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\n\n\t\tPrima uma tecla para continuar");
-                Console.ReadLine();
+                Console.ReadKey();
+                Console.ResetColor();
 
             }
 
@@ -809,13 +883,17 @@ namespace OOP_Project
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\n\t\tPrima uma tecla para continuar...");
-                Console.ReadLine();
+                Console.ReadKey();
+                Console.ResetColor();
             }
 
             Console.WriteLine("\n\t\tContentor removido com sucesso!!");
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("\n\t\tPrima uma tecla para continuar...");
-            Console.ReadLine();
+            Console.ReadKey();
+            Console.ResetColor();
         }
 
         //---- Método para contar os navios no porto
@@ -826,8 +904,10 @@ namespace OOP_Project
             if (s.Ships.Count == 0)
             {
                 Console.WriteLine("\n\t\tNão existem navios no porto!");
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\n\t\tPrima uma tecla para continuar");
-                Console.ReadLine();
+                Console.ReadKey();
+                Console.ResetColor();
             }
             else
             {
@@ -840,9 +920,11 @@ namespace OOP_Project
                 }
 
                 Console.WriteLine("\n\t\tNeste momento encontram-se {0} navios no porto", counter);
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("\n\t\tPrima qualquer  tecla para continuar...");
                 Console.Write("\t\t");
-                Console.ReadLine();
+                Console.ReadKey();
+                Console.ResetColor();
             }
         }
 
@@ -854,8 +936,10 @@ namespace OOP_Project
             if (s.Ships.Count == 0)
             {
                 Console.WriteLine("\n\t\tNão existem navios ao largo!");
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\n\t\tPrima uma tecla para continuar");
-                Console.ReadLine();
+                Console.ReadKey();
+                Console.ResetColor();
             }
             else
             {
@@ -868,8 +952,10 @@ namespace OOP_Project
                 }
 
                 Console.WriteLine("\n\t\tNeste momento encontram-se {0} navios ao largo", counter);
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\n\t\tPrima qualquer  tecla para continuar...");
-                Console.ReadLine();
+                Console.ReadKey();
+                Console.ResetColor();
             }
         }
 
@@ -921,8 +1007,10 @@ namespace OOP_Project
             Console.WriteLine("\t\tQuímico: {0}/{1}", aux.GetContainers().OfType<Chemical>().Count(),
                 aux.GetMaxChemical());
 
-            Console.Write("\n\t\tPrima qualquer tecla para continuar...");
-            Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("\n\t\tPrima uma tecla para continuar...");
+            Console.ReadKey();
+            Console.ResetColor();
 
         }
 
@@ -966,10 +1054,12 @@ namespace OOP_Project
             } while (!success);
 
             aux = s.Ships.Find(s => s.GetNumber() == option);
-
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.White;
             Console.WriteLine(
-                "\t\t===================================== LISTA DE CONTENTORES =====================================");
-
+                "\t\t===================================== LISTA DE CONTENTORES =====================================\t\t");
+            Console.ResetColor();
+            
             foreach (var c in aux.GetContainers())
             {
                 Console.WriteLine(c);
@@ -978,8 +1068,10 @@ namespace OOP_Project
                     RecordsPerPage(counter, 3);
             }
 
-            Console.Write("\t\tPrima qualquer tecla para continuar...");
-            Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("\t\tPrima uma tecla para continuar...");
+            Console.ReadKey();
+            Console.ResetColor();
 
         }
 
@@ -1069,28 +1161,37 @@ namespace OOP_Project
                 auxContainer.SetShipNumber(auxShip.GetNumber());
                 auxShip.AddContainer(auxContainer);
                 Console.WriteLine("\n\t\tContentor adicionado com sucesso!!");
-                Console.Write("\n\t\tPrima um tecla para continuar");
-                Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write("\n\t\tPrima uma tecla para continuar");
+                Console.ReadKey();
+                Console.ResetColor();
             }
             catch (MaxContainersException e)
             {
                 Console.WriteLine(e.Message);
-                Console.Write("\n\t\tPrima um tecla para continuar");
-                Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write("\n\t\tPrima uma tecla para continuar");
+                Console.ReadKey();
+                Console.ResetColor();
+
             }
 
             catch (MaxExplosiveException e)
             {
                 Console.WriteLine(e.Message);
-                Console.Write("\n\t\tPrima um tecla para continuar");
-                Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write("\n\t\tPrima uma tecla para continuar");
+                Console.ReadKey();
+                Console.ResetColor();
             }
 
             catch (MaxChemicalException e)
             {
                 Console.WriteLine(e.Message);
-                Console.Write("\n\t\tPrima um tecla para continuar");
-                Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write("\n\t\tPrima uma tecla para continuar");
+                Console.ReadKey();
+                Console.ResetColor();
             }
 
         }
@@ -1168,16 +1269,21 @@ namespace OOP_Project
                 {
                     auxShip.SetIsAtPort(true);
                     Console.WriteLine("\t\tO navio regressou ao porto!");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.Write("\t\tPrima uma tecla para continuar...");
-                    Console.ReadLine();
+                    Console.ReadKey();
+                    Console.ResetColor();
+                    
                     auxShip.ListContainers();
 
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.Write("\t\tPrima uma tecla para continuar...");
-                    Console.ReadLine();
+                    Console.ReadKey();
+                    Console.ResetColor();
                 }
             }
 
@@ -1224,14 +1330,18 @@ namespace OOP_Project
                 auxContainer.SetShipNumber(-1);
 
                 Console.WriteLine("\t\tContentor removido com sucesso!");
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\n\t\tPrima uma tecla para continuar");
-                Console.ReadLine();
+                Console.ReadKey();
+                Console.ResetColor();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\t\tPrima uma tecla para continuar...");
-                Console.ReadLine();
+                Console.ReadKey();
+                Console.ResetColor();
 
             }
 
@@ -1245,9 +1355,11 @@ namespace OOP_Project
             if (s.Containers.Count == 0)
             {
                 Console.WriteLine("\n\t\tNão existem contentores associados ao porto!");
-                Console.Write("\n\t\tPrima qualquer tecla para continuar...");
-                Console.ReadLine();
-
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write("\n\t\tPrima uma tecla para continuar...");
+                Console.ReadKey();
+                Console.ResetColor();
+                
                 return counter;
             }
 
@@ -1263,8 +1375,11 @@ namespace OOP_Project
 
             if (unassignedContainersCount > 0)
             {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;
                 Console.WriteLine(
-                    "\t\t===================================== LISTA DE CONTENTORES =====================================");
+                    "\t\t===================================== LISTA DE CONTENTORES =====================================\t\t");
+                Console.ResetColor();
                 counter = 0;
                 foreach (var c in s.Containers.Where(c => c.GetShipNumber() == -1))
                 {
@@ -1273,16 +1388,20 @@ namespace OOP_Project
                     if (unassignedContainersCount != counter)
                         RecordsPerPage(counter, 3);
                 }
-
+                
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\n\t\tPrima qualquer tecla para continuar...");
-                Console.ReadLine();
+                Console.ResetColor();
+                Console.ReadKey();
 
             }
             else
             {
                 Console.WriteLine("\n\t\tTodos os contentores estão atribuídos!");
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\n\t\tPrima qualquer tecla para continuar...");
-                Console.ReadLine();
+                Console.ResetColor();
+                Console.ReadKey();
 
             }
 
@@ -1295,14 +1414,16 @@ namespace OOP_Project
         {
             if (numberOfRecords % recordsPerPage == 0)
             {
-                Console.Write("\n\t\tPrima uma Enter para mais registos... ");
-                Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write("\n\t\tPrima uma tecla para mais registos... ");
+                Console.ReadKey();
+                Console.ResetColor();
                 Console.WriteLine(
-                    "\n\t\t*********************************************************************************************");
+                    "\n\t\t_____________________________________________________________________________________________");
             }
         }
 
-        //Função adicional consulta o IPMA para informar o tempo nos próximos 5 dias
+        //Função adicional consulta o IPMA para informar o tempo de 5 dias (só apresenta o primeiro registo)
         public static void GetWeather()
         {
             try
@@ -1317,36 +1438,23 @@ namespace OOP_Project
 
                 Weather weather = JsonConvert.DeserializeObject<Weather>(strJson);
 
-
-                //int counter = 0;
-                DateTime today = DateTime.Today;
                 Console.WriteLine();
-                Console.WriteLine("\t\t---- Distrito de Castelo Branco ----");
-                foreach (var day in weather.data)
-                {
-                    if (day.forecastDate.Equals(today.ToString("yyyy-MM-dd")))
-                    {
-                        Console.WriteLine(day);
-                        /*
-                        counter++;
-                        if (weather.data.Count != counter)
-                            Methods.RecordsPerPage(counter, 5);
-                        */
-                    }   
-                }
-
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.WriteLine("\t\t---- Distrito de Castelo Branco ----\t\t");
+                Console.ResetColor();
+                
+                Console.WriteLine(weather.data[0]);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\n\t\tPrima uma tecla para continuar...");
                 Console.ReadKey();
+                Console.ResetColor();
 
             }
-            /*
-            Console.Write("\n\t\tPrima uma tecla para continuar...");
-            Console.ReadKey();
-            */
         }
         
         // ---- Método de apoio ao GetWeater();
@@ -1368,9 +1476,10 @@ namespace OOP_Project
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\n\t\tPrima uma tecla para continuar...");
                 Console.ReadKey();
-
+                Console.ResetColor();
             }
 
             return null;
@@ -1391,7 +1500,10 @@ namespace OOP_Project
 
                 int counter = 0;
                 Console.WriteLine();
-                Console.WriteLine("\t\t--------------------------------- Últimas Notícias ---------------------------------");
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.WriteLine("\t\t--------------------------------- Últimas Notícias ---------------------------------\t\t");
+                Console.ResetColor();
                 foreach (var news in latestestNews)
                 {
                     Console.WriteLine(news);
@@ -1400,19 +1512,21 @@ namespace OOP_Project
                         Methods.RecordsPerPage(counter, 4);
                 }
 
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write("\n\t\tPrima uma tecla para continuar...");
+                Console.ReadKey();
+                Console.ResetColor();
+
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\n\t\tPrima uma tecla para continuar...");
                 Console.ReadKey();
+                Console.ResetColor();
 
             }
-
-
-            Console.Write("\n\t\tPrima uma tecla para continuar...");
-            Console.ReadKey();
         }
-
     }
 }

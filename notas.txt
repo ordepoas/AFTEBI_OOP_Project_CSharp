@@ -58,4 +58,7 @@ contentor duplicado no FCPorto  //---- OK
  O problema anterior reflecte-se nos outros menus
  
  
- Trocar ReadLine por ReadKey
+ Trocar ReadLine por ReadKey //---- OK
+ 
+ 
+ Comentar código
