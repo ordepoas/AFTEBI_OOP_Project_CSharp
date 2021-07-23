@@ -20,10 +20,38 @@ namespace OOP_Project
         
         public override string ToString()
         {
-            string s = "Título: " + title;
-            s += "\n" + lead;
-            s += "\nPublicado em: " + publish_date;
-            s += "\n------------";
+            string p1, p2, p3;
+
+            string s = "\t\tTítulo: " + title;
+            if (lead.Length > 93)
+            {
+
+                if (lead.Length > 186)
+                {
+                    p3 = lead.Substring(186);
+                    p2 = lead.Substring(93);
+                    p2 = p2.Remove(93);
+                    p1 = lead.Remove(93);
+                    s += "\n\t\t" + p1;
+                    s += "\n\t\t" + p2;
+                    s += "\n\t\t" + p3;
+
+                }
+                else
+                {
+                    p2 = lead.Substring(93);
+                    p1 = lead.Remove(93);
+                    s += "\n\t\t" + p1;
+                    s += "\n\t\t" + p2;
+                }
+
+            }
+            else
+            {
+                s += "\n\t\t" + lead;
+            }
+            s += "\n\t\tPublicado em: " + publish_date;
+            s += "\n\t\t------------";
 
             return s;
         }

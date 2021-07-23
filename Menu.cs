@@ -133,8 +133,8 @@ namespace OOP_Project
             Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine("\t\t=================== GERIR NAVIOS ===================\t\t");
             Console.ResetColor();
-            Console.WriteLine("\t\t(1) Entrada de navio");
-            Console.WriteLine("\t\t(2) Saída de navio");
+            Console.WriteLine("\t\t(1) Entrada de navio no porto");
+            Console.WriteLine("\t\t(2) Saída de navio do porto");
             Console.WriteLine("\t\t(3) Chamar navio ao porto");
             Console.WriteLine("\t\t(4) Número Navios no porto");
             Console.WriteLine("\t\t(5) Número Navios ao Largo");
@@ -203,7 +203,7 @@ namespace OOP_Project
         public static int MenuContainers(Seaport s)
         {
             bool success;
-            int option, counter = 0;
+            int option;
 
             Console.Clear();
             Console.BackgroundColor = ConsoleColor.White;
