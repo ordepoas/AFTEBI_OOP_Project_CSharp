@@ -22,7 +22,7 @@ namespace OOP_Project
         public override string ToString()
         {
             string weatherDiscription;
-            WeatherType wt = Methods.GetWeatherType();
+            WeatherType wt = MainMenu.GetWeatherType();
             WeatherTypeDetails wd = new WeatherTypeDetails();
 
             wd = wt.data.Find(x => x.idWeatherType == this.idWeatherType);

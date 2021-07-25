@@ -27,19 +27,19 @@ namespace OOP_Project
             Seaport s = new Seaport();
             
             //---- restaura os dados de um ficheiro se forem cumpridas as condições
-            if (Menu.RestoreMenu() == 1 && (s = Methods.Restore()) != null)
+            if (MainMenu.RestoreMenu() == 1 && (s = MainMenu.Restore()) != null)
             {
                 s.Ships = s.GetShips();
                 s.Containers = s.GetContainers();
 
             }
             //---- mantem o menu principal ativo enquanto não for escolhida a opção 0
-            while (Menu.MainMenu(s) != 0);
+            while (MainMenu.Menu(s) != 0);
             
             //---- executa o backup do estado do porto se forem cumpridas as condições
-            if (Menu.BackupMenu() == 1 && (s.Ships.Count > 0 || s.Containers.Count > 0))
+            if (MainMenu.BackupMenu() == 1 && (s.Ships.Count > 0 || s.Containers.Count > 0))
             {
-                Methods.Backup(s);
+                MainMenu.Backup(s);
             }
         }
     }
