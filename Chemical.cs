@@ -11,14 +11,21 @@ namespace OOP_Project
         
         public Chemical(){}
 
-        public Chemical(string type, string destination, int weight) : base(
-            destination, weight)
+        public Chemical(string type, string destination, int weight)
         {
+            ShipNumber = -1;
+            Number = ContainerNumber();
+            Destination = destination;
+            Weight = weight;
             _type = type;
         }
         
-        public Chemical(string type, int shipNumber, string destination, int weight) : base(shipNumber,destination, weight)
+        public Chemical(string type, int shipNumber, string destination, int weight)
         {
+            ShipNumber = shipNumber;
+            Number = ContainerNumber();
+            Destination = destination;
+            Weight = weight;
             _type = type;
         }
 

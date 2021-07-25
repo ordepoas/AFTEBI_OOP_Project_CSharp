@@ -20,61 +20,42 @@ namespace OOP_Project
         [DataMember (Name = "Peso")]
         protected int Weight;
         
-        //---- COnstrutor vazio
-        public Container(){}
-        //---- Construtor - o número de contentor é atribuído automaticamente
-        public Container( string destination, int weight)
-        {
-            ShipNumber = -1;
-            Number = ContainerNumber();
-            Destination = destination;
-            Weight = weight;
-        }
-
-        public Container(int shipNumber, string destination, int weight)
-        {
-            ShipNumber = shipNumber;
-            Number = ContainerNumber();
-            Destination = destination;
-            Weight = weight;
-        }
-
-        public int? GetShipNumber()
+        public virtual int GetShipNumber()
         {
             return ShipNumber;
         }
 
-        public void SetShipNumber(int shipNumber)
+        public virtual void SetShipNumber(int shipNumber)
         {
             ShipNumber = shipNumber;
         }
 
-        public string GetNumber()
+        public virtual string GetNumber()
         {
             return Number;
         }
 
-        public void SetNumber(string number)
+        public virtual void SetNumber(string number)
         {
             Number = number;
         }
 
-        public string GetDestination()
+        public virtual string GetDestination()
         {
             return Destination;
         }
 
-        public void SetDestination(string destination)
+        public  virtual void SetDestination(string destination)
         {
             Destination = destination;
         }
 
-        public int GetWeight()
+        public virtual int GetWeight()
         {
             return Weight;
         }
 
-        public void SetWeight(int weight)
+        public virtual void SetWeight(int weight)
         {
             Weight = weight;
         }
@@ -102,7 +83,7 @@ namespace OOP_Project
             return result;
         }
 
-        public string ContainerNumber()
+        protected string ContainerNumber()
         {
             char a, b, c, d;
             int num1, num2;

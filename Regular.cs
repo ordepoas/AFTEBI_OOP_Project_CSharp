@@ -13,14 +13,22 @@ namespace OOP_Project
         
         public Regular(){}
 
-        public Regular(string description, bool isRefrigerated, string destination, int weight ) : base(destination, weight)
+        public Regular(string description, bool isRefrigerated, string destination, int weight )
         {
+            ShipNumber = -1;
+            Number = ContainerNumber();
+            Destination = destination;
+            Weight = weight;
             _description = description;
             _isRefrigerated = isRefrigerated;
         }
         
-        public Regular(string description, bool isRefrigerated, int shipNumber, string destination, int weight ) : base(shipNumber, destination, weight)
+        public Regular(string description, bool isRefrigerated, int shipNumber, string destination, int weight )
         {
+            ShipNumber = shipNumber;
+            Number = ContainerNumber();
+            Destination = destination;
+            Weight = weight;
             _description = description;
             _isRefrigerated = isRefrigerated;
         }
