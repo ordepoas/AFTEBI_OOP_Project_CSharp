@@ -23,16 +23,6 @@ namespace OOP_Project
             _isRefrigerated = isRefrigerated;
         }
         
-        public Regular(string description, bool isRefrigerated, int shipNumber, string destination, int weight )
-        {
-            ShipNumber = shipNumber;
-            Number = ContainerNumber();
-            Destination = destination;
-            Weight = weight;
-            _description = description;
-            _isRefrigerated = isRefrigerated;
-        }
-
         public string GetDescription()
         {
             return _description;

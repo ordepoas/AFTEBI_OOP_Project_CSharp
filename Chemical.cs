@@ -20,15 +20,6 @@ namespace OOP_Project
             _type = type;
         }
         
-        public Chemical(string type, int shipNumber, string destination, int weight)
-        {
-            ShipNumber = shipNumber;
-            Number = ContainerNumber();
-            Destination = destination;
-            Weight = weight;
-            _type = type;
-        }
-
         public string GetNewType()
         {
             return _type;

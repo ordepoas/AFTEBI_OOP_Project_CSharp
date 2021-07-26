@@ -101,8 +101,16 @@ namespace OOP_Project
             switch (k.Key)
             {
                 case ConsoleKey.R:
-                    Console.Write("\n\t\tDestino: ");
-                    destination = Console.ReadLine();
+                    do
+                    {
+                        Console.Write("\n\t\tDestino: ");
+                        destination = Console.ReadLine();
+                        if (string.IsNullOrEmpty(destination))
+                        {
+                            Console.WriteLine("\t\tCampo de preenchimento obrigatóro!");
+                        }
+                    } while (string.IsNullOrEmpty(destination));
+                    
                     do
                     {
                         Console.Write("\t\tPeso: ");
@@ -110,8 +118,16 @@ namespace OOP_Project
 
                     } while (!success);
 
-                    Console.Write("\t\tDescrição da carga: ");
-                    description = Console.ReadLine();
+                    do
+                    {
+                        Console.Write("\t\tDescrição da carga: ");
+                        description = Console.ReadLine();
+                        if (string.IsNullOrEmpty(description))
+                        {
+                            Console.WriteLine("\t\tCampo de preenchimento obrigatóro!");
+                        }
+                        
+                    } while (string.IsNullOrEmpty(description));
 
                     Console.WriteLine("\t\tRefrigerado (S) Sim ou (N) Não");
                     do
@@ -167,8 +183,16 @@ namespace OOP_Project
                     break;
 
                 case ConsoleKey.E:
-                    Console.Write("\n\t\tDestino: ");
-                    destination = Console.ReadLine();
+                    do
+                    {
+                        Console.Write("\n\t\tDestino: ");
+                        destination = Console.ReadLine();
+                        if (string.IsNullOrEmpty(destination))
+                        {
+                            Console.WriteLine("\t\tCampo de preenchimento obrigatóro!");
+                        }
+                    } while (string.IsNullOrEmpty(destination));
+                    
                     do
                     {
                         Console.Write("\t\tPeso: ");
@@ -176,8 +200,16 @@ namespace OOP_Project
 
                     } while (!success);
 
-                    Console.Write("\t\tDescrição do explosivo: ");
-                    typeExplosive = Console.ReadLine();
+                    do
+                    {
+                        Console.Write("\t\tDescrição do explosivo: ");
+                        typeExplosive = Console.ReadLine();
+
+                        if (string.IsNullOrEmpty(typeExplosive))
+                        {
+                            Console.WriteLine("\t\tCampo de preenchimento obrigatóro!");
+                        }
+                    } while (string.IsNullOrEmpty(typeExplosive));
 
                     Console.WriteLine("\t\tExplosivo Plástico (S) Sim ou (N) Não");
                     do
@@ -233,8 +265,16 @@ namespace OOP_Project
                     break;
 
                 case ConsoleKey.Q:
-                    Console.Write("\n\t\tDestino: ");
-                    destination = Console.ReadLine();
+                    do
+                    {
+                        Console.Write("\n\t\tDestino: ");
+                        destination = Console.ReadLine();
+                        if (string.IsNullOrEmpty(destination))
+                        {
+                            Console.WriteLine("\t\tCampo de preenchimento obrigatóro!");
+                        }
+                    } while (string.IsNullOrEmpty(destination));
+                    
                     do
                     {
                         Console.Write("\t\tPeso: ");
@@ -242,8 +282,15 @@ namespace OOP_Project
 
                     } while (!success);
 
-                    Console.Write("\t\tDescrição do químico: ");
-                    typeChemical = Console.ReadLine();
+                    do
+                    {
+                        Console.Write("\t\tDescrição do químico: ");
+                        typeChemical = Console.ReadLine();
+                        if (string.IsNullOrEmpty(typeChemical))
+                        {
+                            Console.WriteLine("\t\tCampo de preenchimento obrigatóro!");
+                        }
+                    } while (string.IsNullOrEmpty(typeChemical));
 
                     var chemical = new Chemical(typeChemical, destination, weight);
                     if (s.Containers.Contains(chemical))
@@ -618,6 +665,7 @@ namespace OOP_Project
             }
 
         }
+        
         //---- Método para listar os contentoes sem navio atribuido
         public static int UnassignedContainers(Seaport s)
         {
@@ -678,6 +726,7 @@ namespace OOP_Project
 
             return counter;
         }
+        
         //--- Método para listar contentores e reutilizado noutros métodos
         public static int ListContainers(Seaport s)
         {

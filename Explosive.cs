@@ -23,18 +23,7 @@ namespace OOP_Project
             _type = type;
             _isPlasticExplosive = isPlasticExplosive;
         }
-
-        public Explosive(string type, bool isPlasticExplosive, int shipNumber, string destination,
-            int weight)
-        {
-            ShipNumber = shipNumber;
-            Number = ContainerNumber();
-            Destination = destination;
-            Weight = weight;
-            _type = type;
-            _isPlasticExplosive = isPlasticExplosive;
-        }
-
+        
         public string GetNewType()
         {
             return _type;

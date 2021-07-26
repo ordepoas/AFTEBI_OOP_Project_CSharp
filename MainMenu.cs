@@ -131,7 +131,7 @@ namespace OOP_Project
             return option;
         }
 
-        //---- Métodos para backup em txt, JSON e XML
+        //---- Métodos para backup em TXT, JSON e XML
         public static void Backup(Seaport s)
         {
             //------- BACKUP PARA TXT
@@ -207,7 +207,7 @@ namespace OOP_Project
 
         }
 
-        //---- Métodos para restores de ficheiros em txt, JSON e XML
+        //---- Métodos para restores de ficheiros em TXT, JSON e XML
         //só faz o restore do ficheiro do tipo seguinte se o anterior não funcionar
         public static Seaport Restore()
         {

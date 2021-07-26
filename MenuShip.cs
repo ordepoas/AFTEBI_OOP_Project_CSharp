@@ -93,8 +93,15 @@ namespace OOP_Project
             int maxContainers, maxExplosive, maxChemical;
             
             Console.WriteLine("\t\tInsira os dados do navio");
-            Console.Write("\t\tNome: ");
-            name = Console.ReadLine();
+            do
+            {
+                Console.Write("\t\tNome: ");
+                name = Console.ReadLine();
+                if (string.IsNullOrEmpty(name))
+                {
+                    Console.WriteLine("\t\tCampo de preenchimento obrigatório!");
+                }
+            } while (string.IsNullOrEmpty(name));
     
             do
             {
@@ -128,8 +135,15 @@ namespace OOP_Project
 
             } while (!success);
 
-            Console.Write("\t\tBandeira: ");
-            flag = Console.ReadLine();
+            do
+            {
+                Console.Write("\t\tBandeira: ");
+                flag = Console.ReadLine();
+                if (string.IsNullOrEmpty(flag))
+                {
+                    Console.WriteLine("\t\tCampo de preenchimento obrigatório!!");
+                }
+            } while (string.IsNullOrEmpty(flag));
 
             Ship auxShip = new Ship(name, maxContainers, maxExplosive, maxChemical, flag);
 
@@ -229,7 +243,7 @@ namespace OOP_Project
             Console.ResetColor();
         }
         
-                //---- Método para mudar o estado do navio para estando no porto é reutilizado noutros métods
+        //---- Método para mudar o estado do navio para estando no porto é reutilizado noutros métods
         public static void CallShipToSeaport(Seaport s)
         {
             bool success;
@@ -356,8 +370,8 @@ namespace OOP_Project
                 Console.ResetColor();
             }
         }
+        
         //---- Método que lista os números dos contentores existentes num navio
-
         public static void ListContainerNumberAtShip(Seaport s)
         {
             bool success;
@@ -410,8 +424,9 @@ namespace OOP_Project
             Console.ReadKey();
             Console.ResetColor();
 
-        }
-                //---- Método que lista com detalhe os contentores existentes num navio
+        } 
+        
+        //---- Método que lista com detalhe os contentores existentes num navio
         public static void ListContainersAtShip(Seaport s)
         {
             bool success;
@@ -506,6 +521,7 @@ namespace OOP_Project
 
             return s.Ships.Count;
         }
+        
         //---- Método para listar os navios que estão ao largo
         public static int ListShipAtLarge(Seaport s)
         {
