@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 namespace OOP_Project
 {
-    public class MainMenu
+    public static class MainMenu
     {
         //---- Método para apresentação do menu de restauro do estado do porto devolve um int com a opção escolhida
         public static int RestoreMenu()

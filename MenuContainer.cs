@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace OOP_Project
 {
-    public class MenuContainer
+    public static class MenuContainer
     {
         //---- Método - Menu Contentores, devolve um int com a opção escolhida e recebe um objeto Seaport
         public static int Menu(Seaport s)
