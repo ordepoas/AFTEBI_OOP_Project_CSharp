@@ -142,6 +142,31 @@ namespace OOP_Project
             }
         }
 
+        public int ShipNumber()
+        {
+            var random = new Random();
+            var rand = random.Next(1000000, 9999999);
+
+            return rand;
+        }
+
+        public int ListContainers()
+        {
+            if (_containers.Count == 0)
+            {
+                Console.WriteLine("\n\t\tEste navio não tem contentores atribuídos!");
+                Console.Write("\n\t\tPrima uma tecla para continuar...");
+                Console.ReadLine();
+
+            }
+            else
+            {
+                _containers.ForEach(Console.WriteLine);
+            }
+
+            return _containers.Count;
+        }
+
         public override string ToString()
         {
             string s = "\t\tNome: " + _name + "\tNúmero: " + _number + "\tBandeira: " + _flag;
@@ -159,42 +184,18 @@ namespace OOP_Project
             return s;
         }
 
+        public override int GetHashCode()
+        {
+            return _number.GetHashCode();
+        }
+
         public override bool Equals(object obj)
         {
             if (!(obj is Ship s)) return false;
-            bool result =
-                _number == s._number &&
-                _maxContainers == s._maxContainers &&
-                _maxExplosive == s._maxExplosive &&
-                _maxChemical == s._maxChemical &&
-                _flag == s._flag;
 
-            return result;
+            return _number == s._number;
+            
         }
 
-        public int ShipNumber()
-        {
-            var random = new Random();
-            var rand = random.Next(1000000, 9999999);
-
-            return rand;
-        }
-
-        public int ListContainers()
-        {
-            if (_containers.Count == 0)
-            {
-                Console.WriteLine("\n\t\tEste navio não tem contentores atribuídos!");
-                Console.Write("\n\t\tPrima uma tecla para continuar...");
-                Console.ReadLine();
-                
-            }
-            else
-            {
-                _containers.ForEach(Console.WriteLine);
-            }
-
-            return _containers.Count;
-        }
     }
 }

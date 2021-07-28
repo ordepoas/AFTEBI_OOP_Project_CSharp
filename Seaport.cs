@@ -53,6 +53,11 @@ namespace OOP_Project
             return s + c;
         }
 
+        public override int GetHashCode()
+        {
+            return Ships.GetHashCode() + Containers.GetHashCode();
+        }
+
         public override bool Equals(object obj)
         {
             if (!(obj is Seaport e)) return false;

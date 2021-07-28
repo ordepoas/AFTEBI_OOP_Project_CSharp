@@ -20,44 +20,64 @@ namespace OOP_Project
         [DataMember (Name = "Peso")]
         protected int Weight;
         
-        public virtual int GetShipNumber()
+        public int GetShipNumber()
         {
             return ShipNumber;
         }
 
-        public virtual void SetShipNumber(int shipNumber)
+        public void SetShipNumber(int shipNumber)
         {
             ShipNumber = shipNumber;
         }
 
-        public virtual string GetNumber()
+        public string GetNumber()
         {
             return Number;
         }
 
-        public virtual void SetNumber(string number)
+        public void SetNumber(string number)
         {
             Number = number;
         }
 
-        public virtual string GetDestination()
+        public string GetDestination()
         {
             return Destination;
         }
 
-        public  virtual void SetDestination(string destination)
+        public void SetDestination(string destination)
         {
             Destination = destination;
         }
 
-        public virtual int GetWeight()
+        public int GetWeight()
         {
             return Weight;
         }
 
-        public virtual void SetWeight(int weight)
+        public void SetWeight(int weight)
         {
             Weight = weight;
+        }
+
+        protected string ContainerNumber()
+        {
+            char a, b, c, d;
+            int num1, num2;
+            string cNumb;
+
+            var random = new Random();
+            a = (char)random.Next(65, 90);
+            b = (char)random.Next(65, 90);
+            c = (char)random.Next(65, 90);
+            d = (char)random.Next(65, 90);
+            num1 = random.Next(100000, 999999);
+            num2 = random.Next(1, 9);
+
+            cNumb = a.ToString() + b.ToString() + c.ToString() + d.ToString() + " " + num1 + " " + num2;
+
+            return cNumb;
+
         }
 
         public override string ToString()
@@ -72,35 +92,17 @@ namespace OOP_Project
             return s;
         }
 
+        public override int GetHashCode()
+        {
+            return Number.GetHashCode();
+        }
+
         public override bool Equals(object obj)
         {
             if (!(obj is Container c)) return false;
-            var result =
-                Number == c.Number &&
-                Destination.Equals(c.Destination) &&
-                Weight == c.Weight;
 
-            return result;
+            return Number == c.Number;
         }
 
-        protected string ContainerNumber()
-        {
-            char a, b, c, d;
-            int num1, num2;
-            string cNumb;
-            
-            var random = new Random();
-            a = (char)random.Next(65, 90);
-            b = (char)random.Next(65, 90);
-            c = (char)random.Next(65, 90);
-            d = (char)random.Next(65, 90);
-            num1 = random.Next(100000, 999999);
-            num2 = random.Next(1, 9);
-
-            cNumb = a.ToString() + b.ToString() + c.ToString() + d.ToString() + " " + num1 + " " + num2;
-
-            return cNumb;
-
-        }
     }
 }

@@ -138,74 +138,85 @@ namespace OOP_Project
         public static void Backup(Seaport s)
         {
             //------- BACKUP PARA TXT
+            IFormatter formatador = new BinaryFormatter();
+            Stream streamTxt = new FileStream("backup.txt", FileMode.Create, FileAccess.Write);
+
             try
             {
-                IFormatter formatador = new BinaryFormatter();
-                Stream streamTxt = new FileStream("backup.txt", FileMode.Create, FileAccess.Write);
-
                 formatador.Serialize(streamTxt, s);
 
-                streamTxt.Close();
                 Console.WriteLine("\t\tBackup efetuado com sucesso!");
 
             }
-            catch (Exception e)
+            catch (IOException e)
             {
                 Console.Write("\t\t");
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Error: " + e.Message);
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\t\tPrima qualquer tecla para continuar...");
                 Console.ReadKey();
                 Console.ResetColor();
 
+            }
+            finally
+            {
+                streamTxt.Close();
             }
 
             //-------- BACKUP PARA JSON
+            DataContractJsonSerializer djs;
+            FileStream stream = File.Create("backup.json");
+
             try
             {
 
-                DataContractJsonSerializer djs;
-                FileStream stream = File.Create("backup.json");
                 djs = new DataContractJsonSerializer(typeof(Seaport));
                 djs.WriteObject(stream, s);
 
-                stream.Close();
                 Console.WriteLine("\t\tBackup efetuado com sucesso!");
 
             }
 
-            catch (Exception e)
+            catch (IOException e)
             {
                 Console.Write("\t\t");
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Error: " + e.Message);
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\t\tPrima qualquer tecla para continuar...");
                 Console.ReadKey();
                 Console.ResetColor();
 
+            }
+            finally
+            {
+                stream.Close();
             }
 
             //-------- BACKUP PARA XML
+            DataContractSerializer ds;
+            FileStream streamXml = File.Create("backup.xml");
             try
             {
-                DataContractSerializer ds;
-                FileStream stream = File.Create("backup.xml");
                 ds = new DataContractSerializer(typeof(Seaport));
-                ds.WriteObject(stream, s);
+                ds.WriteObject(streamXml, s);
 
-                stream.Close();
                 Console.WriteLine("\t\tBackup efetuado com sucesso!");
 
 
             }
-            catch (Exception e)
+            catch (IOException e)
             {
                 Console.Write("\t\t");
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Error: " + e.Message);
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("\t\tPrima qualquer tecla para continuar...");
                 Console.ReadKey();
                 Console.ResetColor();
+            }
+            finally
+            {
+                streamXml.Close();
+
             }
 
         }
