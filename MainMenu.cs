@@ -44,7 +44,9 @@ namespace OOP_Project
         {
             bool success;
             int option;
+
             Console.Clear();
+            Console.WriteLine();
             Console.WriteLine("\t\tDeseja fazer 'backup' do Estado do porto?");
             Console.WriteLine("\t\t(1) - Sim | (2) - Não");
             //---- recolha e validação da opção escolhida
@@ -71,6 +73,7 @@ namespace OOP_Project
             int option;
             
             Console.Clear();
+            Console.WriteLine();
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine("\t\t====== MENU PRINCIPAL ======\t\t");

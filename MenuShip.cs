@@ -13,6 +13,7 @@ namespace OOP_Project
             bool success;
 
             Console.Clear();
+            Console.WriteLine();
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine("\t\t=================== GERIR NAVIOS ===================\t\t");

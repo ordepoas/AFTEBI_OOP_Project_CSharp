@@ -28,10 +28,10 @@ namespace OOP_Project
 
                 if (lead.Length > 186)
                 {
+                   
+                    p1 = lead.Substring(0,93);
+                    p2 = lead.Substring(93, 93);
                     p3 = lead.Substring(186);
-                    p2 = lead.Substring(93);
-                    p2 = p2.Remove(93);
-                    p1 = lead.Remove(93);
                     s += "\n\t\t" + p1;
                     s += "\n\t\t" + p2;
                     s += "\n\t\t" + p3;
@@ -39,8 +39,8 @@ namespace OOP_Project
                 }
                 else
                 {
+                    p1 = lead.Substring(0,93);
                     p2 = lead.Substring(93);
-                    p1 = lead.Remove(93);
                     s += "\n\t\t" + p1;
                     s += "\n\t\t" + p2;
                 }

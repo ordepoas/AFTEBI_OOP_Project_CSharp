@@ -11,6 +11,7 @@ namespace OOP_Project
         {
             //---- apresentação do logo de entrada de um ficheiro de texto.
             Console.Clear();
+            Console.WriteLine();
             string[] logo = File.ReadAllLines("logo.txt");
             foreach (string line in logo)
             {
