@@ -23,6 +23,7 @@ namespace OOP_Project
             Console.WriteLine("\t\t(4) Retirar um contentor de um navio");
             Console.WriteLine("\t\t(5) Listar todos os contentores não atribuídos");
             Console.WriteLine("\t\t(6) Listar todos os contentores");
+            Console.WriteLine("\t\t(7) Procurar contentor");
             Console.WriteLine("\n\t\t(9) Menu Anterior");
             Console.WriteLine("\t\t(0) Sair");
             //recolha e validação da opção escolhida
@@ -32,7 +33,7 @@ namespace OOP_Project
                 success = int.TryParse(Console.ReadLine(), out option);
                 if(!success) 
                     Console.WriteLine("\t\tOpção inválida!");
-                if (success && (option < 0 || option > 6))
+                if (success && (option < 0 || option > 7))
                 {
                     if (option != 9)
                     {
@@ -75,6 +76,9 @@ namespace OOP_Project
                 //listar todos os contentores;
                 case 6 :
                     ListContainers(s);
+                    break;
+                case 7:
+                    FindContainer(s);
                     break;
             }
             return option;
@@ -764,6 +768,191 @@ namespace OOP_Project
             }
 
             return s.Containers.Count;
+        }
+
+        public static int FindContainer(Seaport s)
+        {
+            Console.Clear();
+            Console.WriteLine();
+
+            Console.WriteLine("\t\tProcurar por (C)ódigo ou (D)estino?");
+
+            ConsoleKeyInfo k;
+            bool success;
+            string searchValue;
+            Container c;
+            int option = 9;
+
+            do
+            {
+                Console.Write("\t\t");
+                success = true;
+                k = Console.ReadKey();
+
+                if (k.Key != ConsoleKey.C && k.Key != ConsoleKey.D)
+                {
+                    Console.WriteLine("\n\t\tOpção inválida!");
+                    success = false;
+                }
+
+            } while (!success);
+
+            switch (k.Key)
+            {
+                case ConsoleKey.C:
+
+                    Console.Write("\n\t\tInsira o número do contentor a procurar: ");
+                    searchValue = Console.ReadLine();
+
+                    c = s.Containers.Find(x => x.GetNumber() == searchValue);
+                    if(c == null)
+                    {
+                        Console.WriteLine("\t\tContentor não existe!");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.Write("\n\n\t\tPrima uma tecla para continuar");
+                        Console.ReadKey();
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.WriteLine(c);
+                        Console.WriteLine();
+                        Console.WriteLine("\t\t(1) Saída de contentor");
+                        Console.WriteLine("\t\t(2) Atribuir contentor a um navio");
+                        Console.WriteLine("\t\t(3) Retirar contentor de um navio");
+
+                        Console.WriteLine("\n\t\t(9) Menu Anterior");
+                        Console.WriteLine("\t\t(0) Sair");
+                        //recolha e validação da opção escolhida
+                        do
+                        {
+                            Console.Write("\n\t\tIndique a sua opção: ");
+                            success = int.TryParse(Console.ReadLine(), out option);
+                            if (!success)
+                                Console.WriteLine("\t\tOpção inválida!");
+                            if (success && (option < 0 || option > 3))
+                            {
+                                if (option != 9)
+                                {
+                                    Console.WriteLine("\t\tOpção inválida!");
+                                    success = false;
+                                }
+
+                            }
+
+                            if (option == 2 && c.GetShipNumber() != -1)
+                            {
+                                Console.WriteLine("\t\tEste contentor já se encontra num navio!");
+                                Console.WriteLine("\t\tOpção inválida!");
+                                success = false;
+                            }
+
+                        } while (!success);
+
+                        switch(option)
+                        {
+                            case 0:
+                            case 9:
+                                return option;
+
+                            case 1:
+                                if (c.GetShipNumber() == -1)
+                                {
+                                    Ship sh = s.Ships.Find(x => x.GetNumber() == c.GetShipNumber());
+                                    sh.GetContainers().Remove(c);
+                                }
+
+                                s.Containers.Remove(c);
+
+                                Console.WriteLine("\t\tContentor removido com sucesso!");
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                Console.Write("\n\n\t\tPrima uma tecla para continuar");
+                                Console.ReadKey();
+                                Console.ResetColor();
+
+                                return option;
+
+                            case 2:
+                                option = MainMenu.ListShipAtSeaport(s);
+                                if (option == 0)
+                                    break;
+
+                                Console.WriteLine("\n\t\tIndique o número do navio: ");
+
+                                do
+                                {
+                                    Console.Write("\t\t");
+                                    success = int.TryParse(Console.ReadLine(), out option);
+
+                                    if (success && (s.Ships.Find(s => s.GetNumber() == option) == null))
+                                    {
+                                        Console.WriteLine(
+                                            "\t\tO número que indicou não existe, prima ENTER para continuar ou prima S para Sair");
+                                        success = false;
+                                        Console.Write("\t\t");
+                                                                                
+                                        do
+                                        {
+                                            k = Console.ReadKey();
+
+                                        } while (k.Key != ConsoleKey.S && k.Key != ConsoleKey.Enter);
+
+                                        if (k.Key == ConsoleKey.S)
+                                        {
+                                            return 0;
+                                        }
+                                    }
+
+                                } while (!success);
+
+                                Ship ship = s.Ships.Find(s => s.GetNumber() == option);
+
+                                try
+                                {
+                                    c.SetShipNumber(ship.GetNumber());
+                                    ship.AddContainer(c);
+                                    Console.WriteLine("\n\t\tContentor adicionado com sucesso!!");
+                                    Console.ForegroundColor = ConsoleColor.Cyan;
+                                    Console.Write("\n\t\tPrima uma tecla para continuar");
+                                    Console.ReadKey();
+                                    Console.ResetColor();
+                                }
+                                catch (MaxContainersException e)
+                                {
+                                    Console.WriteLine(e.Message);
+                                    Console.ForegroundColor = ConsoleColor.Cyan;
+                                    Console.Write("\n\t\tPrima uma tecla para continuar");
+                                    Console.ReadKey();
+                                    Console.ResetColor();
+
+                                }
+
+                                catch (MaxExplosiveException e)
+                                {
+                                    Console.WriteLine(e.Message);
+                                    Console.ForegroundColor = ConsoleColor.Cyan;
+                                    Console.Write("\n\t\tPrima uma tecla para continuar");
+                                    Console.ReadKey();
+                                    Console.ResetColor();
+                                }
+
+                                catch (MaxChemicalException e)
+                                {
+                                    Console.WriteLine(e.Message);
+                                    Console.ForegroundColor = ConsoleColor.Cyan;
+                                    Console.Write("\n\t\tPrima uma tecla para continuar");
+                                    Console.ReadKey();
+                                    Console.ResetColor();
+                                }
+                                return 2;
+                        }
+                    }
+
+                    break;
+            }
+
+            return option;
+
         }
 
     }

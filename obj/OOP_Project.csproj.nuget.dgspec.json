@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\source\\repos\\OOP_Project\\OOP_Project\\OOP_Project.csproj": {}
+    "C:\\repos\\OOP_Project\\OOP_Project.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\source\\repos\\OOP_Project\\OOP_Project\\OOP_Project.csproj": {
+    "C:\\repos\\OOP_Project\\OOP_Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\source\\repos\\OOP_Project\\OOP_Project\\OOP_Project.csproj",
+        "projectUniqueName": "C:\\repos\\OOP_Project\\OOP_Project.csproj",
         "projectName": "OOP_Project",
-        "projectPath": "C:\\Users\\HP\\source\\repos\\OOP_Project\\OOP_Project\\OOP_Project.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\source\\repos\\OOP_Project\\OOP_Project\\obj\\",
+        "projectPath": "C:\\repos\\OOP_Project\\OOP_Project.csproj",
+        "packagesPath": "C:\\Users\\JP\\.nuget\\packages\\",
+        "outputPath": "C:\\repos\\OOP_Project\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\JP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
