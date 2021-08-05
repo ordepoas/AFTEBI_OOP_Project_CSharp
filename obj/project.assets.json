@@ -48,9 +48,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\JP\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\jpaul\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -58,15 +57,14 @@
       "projectUniqueName": "C:\\repos\\OOP_Project\\OOP_Project.csproj",
       "projectName": "OOP_Project",
       "projectPath": "C:\\repos\\OOP_Project\\OOP_Project.csproj",
-      "packagesPath": "C:\\Users\\JP\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\jpaul\\.nuget\\packages\\",
       "outputPath": "C:\\repos\\OOP_Project\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\JP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jpaul\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
